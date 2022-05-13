@@ -48,20 +48,7 @@ namespace SL.BLL.CompositeBLL
 
         public void EliminarPermiso(PatenteModel permiso)
         {
-            throw new NotImplementedException();
-        }
-
-        public void GuardarFamilia(Permiso_PermisoModel familia)
-        {
-            try
-            {
-                Insertar(familia);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            Eliminar(permiso);
         }
     }
 }

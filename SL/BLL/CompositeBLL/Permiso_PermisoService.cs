@@ -21,7 +21,7 @@ namespace SL.BLL.CompositeBLL
 
         public void EliminarFamilia(int familia_Id)
         {
-            var listaFamilia = Get(x => x.id_permiso_padre == familia_Id);
+            var listaFamilia = Get(x => x.id_permiso_padre == familia_Id).ToList();
             foreach (var familia in listaFamilia)
             {
                 Eliminar(familia);
@@ -31,7 +31,6 @@ namespace SL.BLL.CompositeBLL
         public void GuardarFamilia(Permiso_PermisoModel familia)
         {
             //crear regla para no asignar una familia padre como familia hija
-            
             Insertar(familia);
             _unitOfWork.Save();
         }
