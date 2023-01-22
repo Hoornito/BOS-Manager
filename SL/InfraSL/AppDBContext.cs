@@ -18,7 +18,7 @@ namespace SL.InfraSL
 
         }
 
-        public AppDBContext(DbContextOptions dbContextOptions)
+        public AppDBContext(DbContextOptions<AppDBContext> dbContextOptions)
             : base(dbContextOptions)
         {
 

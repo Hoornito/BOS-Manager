@@ -14,7 +14,8 @@ namespace SL.Domain.Entities
         public abstract IList<ComponenteEntity> Hijos { get; }
         public abstract void AgregarHijo(ComponenteEntity c);
         public abstract void VaciarHijos();
-        public TipoPermiso Permiso { get; set; }
+        public abstract void QuitarHijo(ComponenteEntity c);
+        public TipoPermiso? Permiso { get; set; }
 
         public override string ToString()
         {

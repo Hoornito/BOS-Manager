@@ -21,7 +21,7 @@ namespace SL.IoC.Register
         internal static IServiceCollection RegisterControllers(this IServiceCollection services)
         {
             Type[] Controllers = GetTypeInNamespace(Assembly.Load("UI"), "UI.Controllers");
-            Type[] IControllers = GetTypeInNamespace(Assembly.Load("Contratos"), "Contratos.Controllers");
+            Type[] IControllers = GetTypeInNamespace(Assembly.Load("SL"), "SL.Contratos.Controllers");
 
 
             foreach (Type icontrolador in IControllers)

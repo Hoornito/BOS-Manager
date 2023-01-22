@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SL.Domain.Models
+namespace SL.Contratos.Controllers
 {
-    internal class SimuladorDeSesionModel
+    public interface IUsuariosController
     {
+        
     }
 }

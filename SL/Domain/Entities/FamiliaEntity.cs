@@ -27,9 +27,15 @@ namespace SL.Domain.Entities
         {
             _hijos = new List<ComponenteEntity>();
         }
+        
         public override void AgregarHijo(ComponenteEntity c)
         {
             _hijos.Add(c);
+        }
+
+        public override void QuitarHijo(ComponenteEntity c)
+        {
+            _hijos.Remove(c);
         }
     }
 }

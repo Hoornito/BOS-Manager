@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SL.BLL.CompositeBLL
 {
-    public class PermisosService : GenericService<PatenteModel>, IPermisosService
+    public class PermisosService : GenericService<PermisoModel>, IPermisosService
     {
         public PermisosService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IPermisosRepository>())
@@ -24,13 +24,13 @@ namespace SL.BLL.CompositeBLL
         {
             return Enum.GetValues(typeof(TipoPermiso));
         }
-
-        public void ActualizarPermiso(PatenteModel permiso)
+        
+        public void ActualizarPermiso(PermisoModel permiso)
         {
             throw new NotImplementedException();
         }
 
-        public PatenteModel CrearPermiso(PatenteModel permiso)
+        public PermisoModel CrearPermiso(PermisoModel permiso)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace SL.BLL.CompositeBLL
             }
         }
 
-        public void EliminarPermiso(PatenteModel permiso)
+        public void EliminarPermiso(PermisoModel permiso)
         {
             Eliminar(permiso);
         }

@@ -154,6 +154,11 @@ namespace SL.InfraSL.Repositories
             GC.SuppressFinalize(this);
         }
 
+        public void Delete(List<T> entities)
+        {
+            this._context.RemoveRange(entities);
+            this._context.Entry(entities).State = EntityState.Detached;
+        }
         #endregion Methods
     }
 }

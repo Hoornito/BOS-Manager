@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace SL.Contratos.Services
 {
-    public interface IPermisosService : IGenericService<PatenteModel>
+    public interface IPermisosService : IGenericService<PermisoModel>
     {
-        public PatenteModel CrearPermiso(PatenteModel permiso);
+        public PermisoModel CrearPermiso(PermisoModel permiso);
 
-        public void ActualizarPermiso(PatenteModel permiso);
+        public void ActualizarPermiso(PermisoModel permiso);
 
-        public void EliminarPermiso(PatenteModel permiso);
+        public void EliminarPermiso(PermisoModel permiso);
 
     }
 }

@@ -28,5 +28,9 @@ namespace SL.Domain.Entities
         {
             throw new NotImplementedException();
         }
+        public override void QuitarHijo(ComponenteEntity c)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

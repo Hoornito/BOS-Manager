@@ -1,4 +1,4 @@
-﻿using SL.Domain.Models;
+﻿using SL.Domain.Entities;
 
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,12 @@ namespace SL.Contratos.Controllers
 {
     public interface IPermisosController
     {
-        public PatenteModel CrearPermiso(PatenteModel permiso, bool esfamilia);
+        public ComponenteEntity GuardarComponente(ComponenteEntity componente, bool esfamilia);
+        
+        public void GuardarFamilia(FamiliaEntity familia);
 
-        public void ActualizarPermiso(PatenteModel permiso);
-
-        public void EliminarPermiso(PatenteModel permiso);
-
-        public void GuardarFamilia(FamiliaModel familia);
-
-        public void EliminarFamilia(int familia_Id);
+        public IList<PatenteEntity> GetAllPatentes();
+        public IList<FamiliaEntity> GetAllFamilias();
+        public void GuardarPatente(string patente, string permiso);
     }
 }

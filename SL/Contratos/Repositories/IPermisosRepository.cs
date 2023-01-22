@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SL.Contratos.Repositories
 {
-    public interface IPermisosRepository : IGenericRepository<PatenteModel>
+    public interface IPermisosRepository : IGenericRepository<PermisoModel>
     {
     }
 }

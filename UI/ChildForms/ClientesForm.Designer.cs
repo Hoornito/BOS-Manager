@@ -329,6 +329,7 @@ namespace UI.ChildForms
             this.MinimumSize = new System.Drawing.Size(1000, 525);
             this.Name = "ClientesForm";
             this.Text = "ClientesForm";
+            this.Load += new System.EventHandler(this.ClientesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

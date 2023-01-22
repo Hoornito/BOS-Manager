@@ -25,7 +25,8 @@ namespace SL.Contratos.Services
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "",
-            bool ignoreQueryFilters = false);
+            bool ignoreQueryFilters = false,
+            bool tracking = true);
 
         T GetOne(
             Expression<Func<T, bool>> filter = null,
@@ -33,5 +34,6 @@ namespace SL.Contratos.Services
             string includeProperties = "",
             bool ignoreQueryFilters = false);
 
+        void Eliminar(List<T> entities);
     }
 }

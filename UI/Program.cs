@@ -9,11 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using SL.IoC;
 using SL.Services.Mapper;
 
 using System;
 using System.IO;
 using System.Windows.Forms;
+
+using UI.ChildForms;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -40,7 +43,8 @@ namespace UI
                 .Build();
 
             var services = host.Services;
-            var mainForm = services.GetRequiredService<LoginForm>();
+            var mainForm = services.GetRequiredService<PatenteFamiliaForm>();
+            //var mainForm = services.GetRequiredService<LoginForm>();
             Application.Run(mainForm);
 
         }
@@ -48,11 +52,16 @@ namespace UI
 
         public static void ConfigureServices(IServiceCollection services)
         {
+            ConfigurationBuild();
+            services.AddDbContext<SL.InfraSL.AppDBContext>(options =>
+            options.UseSqlServer(GetSLConnString()).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             services.AddDbContext<AppDBContext>(options =>
             options.UseSqlServer(GetConnectionString()).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
-            services.AddSingleton<LoginForm>();
-
-            services.AddAutoMapper(typeof(LoginForm));
+            //services.AddSingleton<LoginForm>();
+            services.AddSingleton<PatenteFamiliaForm>();
+            
+            //services.AddAutoMapper(typeof(LoginForm));
+            services.AddAutoMapper(typeof(PatenteFamiliaForm));
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MapperHelper());
@@ -62,17 +71,26 @@ namespace UI
 
 
             services.ConfigureIoC(Configuration);
+            services.ConfigureIoCSL(Configuration);
+        }
 
+        
+        private static void ConfigurationBuild()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            Configuration = builder.Build();
         }
 
         private static string GetConnectionString()
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appSettings.json");
-
-            Configuration = builder.Build();
             var connectionString = Configuration.GetConnectionString("SqlConnection");
+            return connectionString;
+        }
+        private static string GetSLConnString()
+        {
+            var connectionString = Configuration.GetConnectionString("ServiceLayerSqlConnection");
             return connectionString;
         }
     }

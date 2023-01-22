@@ -13,7 +13,7 @@ namespace SL.IoC
 {
     public static class IoCRegister
     {
-        public static IServiceCollection ConfigureIoC(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureIoCSL(this IServiceCollection services, IConfiguration configuration)
         {
             services.RegisterControllers();
             services.RegisterDataLayer(configuration);

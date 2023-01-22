@@ -11,6 +11,7 @@ namespace SL.Tools
 {
     public class MessageService
     {
+        //pasar esto al app.config
         const string accountSid = "AC1fd65a4267bbf74e58671023ef390e4a";
         const string authToken = "fb46526c023402dd087768562c41e96e";
 

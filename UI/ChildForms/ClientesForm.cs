@@ -163,5 +163,10 @@ namespace UI.ChildForms
                 e.Handled = true;
             }
         }
+
+        private void ClientesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

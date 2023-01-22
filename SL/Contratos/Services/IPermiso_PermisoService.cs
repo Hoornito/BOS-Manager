@@ -10,7 +10,6 @@ namespace SL.Contratos.Services
 {
     public interface IPermiso_PermisoService : IGenericService<Permiso_PermisoModel>
     {
-        public void GuardarFamilia(Permiso_PermisoModel familia);
-        public void EliminarFamilia(int familia_Id);
+        public void GuardarFamilia(Permiso_PermisoModel familia, List<Permiso_PermisoModel> hijos);
     }
 }

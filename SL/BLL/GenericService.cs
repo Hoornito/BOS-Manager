@@ -42,10 +42,10 @@ namespace SL.BLL
         {
             _repository.Delete(entities);
         }
-
-        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "", bool ignoreQueryFilters = false)
+        
+        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "", bool ignoreQueryFilters = false, bool tracking = true)
         {
-            var result = _repository.Get(filter, orderBy, includeProperties, ignoreQueryFilters);
+            var result = _repository.Get(filter, orderBy, includeProperties, ignoreQueryFilters, tracking);
             return result;
         }
 
@@ -64,6 +64,11 @@ namespace SL.BLL
         public virtual IEnumerable<T> GetAll()
         {
             return _repository.TableNoTracking.AsEnumerable<T>();
+        }
+
+        public void Eliminar(List<T> entities)
+        {
+            _repository.Delete(entities);
         }
     }
 }

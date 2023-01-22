@@ -59,6 +59,10 @@ namespace SL.Contratos
 
         IQueryable<T> TableNoTracking { get; }
 
-
+        /// <summary>
+        /// Elimina La lista de clases especificada
+        /// </summary>
+        /// <param name="entities"></param>
+        void Delete(List<T> entities);
     }
 }
