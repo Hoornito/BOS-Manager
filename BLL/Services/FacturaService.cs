@@ -1,6 +1,7 @@
 ﻿using Contratos.Repositories;
 using Contratos.Services;
 
+using Domain.Entities;
 using Domain.Models;
 
 using SL.Tools;
@@ -46,6 +47,21 @@ namespace BLL.Services
 
                 throw;
             }
+        }
+        
+        public FacturaModel ObtenerUltimaFactura()
+        {
+            try
+            {
+                var factura = Get().OrderByDescending(x => x.Id_Factura).FirstOrDefault();
+                return factura;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

@@ -291,7 +291,6 @@ namespace UI.ChildForms
                 pedidoEntity.Id_Pedido = Convert.ToInt32(txtPedido.Text);
                 pedidoEntity.Dirección = txtDireccion.Text;
                 pedidoEntity.TelefonoContacto = cbCliente.Text;
-                //pedidoEntity.Total = 1500; //luego ver de como calcular el total sumando detalle pedido 
                 pedidoEntity.Descripción = txtDescripción.Text;
                 _pedidoController.GuardarCambios(pedidoEntity);
                 LimpiarForm();

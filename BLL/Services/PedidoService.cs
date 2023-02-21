@@ -3,6 +3,7 @@ using Contratos.Services;
 
 using Domain.Models;
 
+using SL.Services;
 using SL.Tools;
 
 using System;
@@ -26,7 +27,7 @@ namespace BLL.Services
                 var _detalleService = _unitOfWork.GetRepository<IDetalleRepository>();
 
                 List<DetalleModel> detalle = _detalleService.Get(x => x.Id_Pedido == pedidoModel.Id_Pedido, includeProperties: "Producto").ToList();
-
+                pedidoModel.Total = 0;
                 foreach (var item in detalle)
                 {
                     pedidoModel.Total += (item.Cantidad * item.Producto.PrecioUnidad);
@@ -34,6 +35,8 @@ namespace BLL.Services
 
                 Actualizar(pedidoModel);
                 _unitOfWork.Save();
+
+                
                 if (pedidoModel.Estado == "Finalizado")
                 {
                     MessageService messageService = new MessageService();
@@ -58,7 +61,7 @@ namespace BLL.Services
                 pedidoModel.Estado = "Nuevo";
                 pedidoModel.FechaHora = DateTime.Now;
                 Insertar(pedidoModel);
-
+                                
                 //_unitOfWork.Save();
             }
             catch (Exception)

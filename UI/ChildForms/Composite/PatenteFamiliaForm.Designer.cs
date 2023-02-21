@@ -1,4 +1,4 @@
-﻿namespace UI.ChildForms
+﻿namespace UI.ChildForms.Composite
 {
     partial class PatenteFamiliaForm
     {
@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_crearFamilia = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_CrearFamilia = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_agregarPatente = new System.Windows.Forms.Button();
             this.cb_patentes = new System.Windows.Forms.ComboBox();
@@ -56,6 +56,7 @@
             this.btn_agregar.TabIndex = 0;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // btn_configurar
             // 
@@ -101,13 +102,14 @@
             this.btn_crearFamilia.TabIndex = 4;
             this.btn_crearFamilia.Text = "Crear";
             this.btn_crearFamilia.UseVisualStyleBackColor = true;
+            this.btn_crearFamilia.Click += new System.EventHandler(this.btn_crearFamilia_Click);
             // 
-            // textBox1
+            // tb_CrearFamilia
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 23);
-            this.textBox1.TabIndex = 8;
+            this.tb_CrearFamilia.Location = new System.Drawing.Point(42, 233);
+            this.tb_CrearFamilia.Name = "tb_CrearFamilia";
+            this.tb_CrearFamilia.Size = new System.Drawing.Size(179, 23);
+            this.tb_CrearFamilia.TabIndex = 8;
             // 
             // label3
             // 
@@ -223,7 +225,7 @@
             this.Controls.Add(this.cb_patentes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_agregarPatente);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_CrearFamilia);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_crearFamilia);
             this.Controls.Add(this.label1);
@@ -245,7 +247,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_crearFamilia;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_CrearFamilia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_agregarPatente;
         private System.Windows.Forms.ComboBox cb_patentes;

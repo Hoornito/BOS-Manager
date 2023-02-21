@@ -15,7 +15,6 @@ namespace UI.ChildForms
 {
     public partial class VisualizarPedidosForm : Form
     {
-
         IPedidoController _pedidoController;
         IDetalleController _detalleController;
         public VisualizarPedidosForm(IPedidoController pedidoController, IDetalleController detalleController)
@@ -77,7 +76,7 @@ namespace UI.ChildForms
             dataGridViewPedidoDetalle.DataSource = null;
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void btnRefrescar_Click(object sender, EventArgs e)
         {
             LlenarGrillaPedido();
         }

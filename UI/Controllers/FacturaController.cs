@@ -8,6 +8,8 @@ using Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+using SL.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +45,8 @@ namespace UI.Controllers
                 {
                     case EntityState.Added:
                         _facturaService.CrearFactura(facturaDTO);
-
+                        var nroFactura = _facturaService.ObtenerUltimaFactura().Id_Factura;
+                        LoggerManager.Info($"Factura #{nroFactura} generada correctamente.");
                         break;
 
                     case EntityState.Modified:

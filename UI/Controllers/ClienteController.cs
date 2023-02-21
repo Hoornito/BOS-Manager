@@ -8,6 +8,8 @@ using Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+using SL.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +58,7 @@ namespace UI.Controllers
                 {
                     case EntityState.Added:
                         _clienteService.CrearCliente(clienteDTO);
+                        LoggerManager.Info($"El cliente {clienteDTO.Nombre} fue creado correctamente.");
                         break;
 
                     case EntityState.Modified:
@@ -68,6 +71,7 @@ namespace UI.Controllers
                         clienteDTO.Dirección = clienteEntity.Dirección;
                         clienteDTO.DNI = clienteEntity.DNI;
                         _clienteService.ActualizarCliente(clienteDTO);
+                        LoggerManager.Info($"El cliente {clienteDTO.Nombre} fue actualizado correctamente.");
                         break;
 
                     case EntityState.Deleted:
@@ -80,6 +84,7 @@ namespace UI.Controllers
                         //clienteDTO.DNI = clienteEntity.DNI;
                         clienteDTO.Active = false;
                         _clienteService.ActualizarCliente(clienteDTO);
+                        LoggerManager.Info($"El cliente {clienteDTO.Nombre} fue eliminado correctamente.");
                         //CustomerService.Current.Remove(customerDTO.IdCustomer);
                         break;
                 }

@@ -41,7 +41,7 @@ namespace SL.DAL
                 conexion.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

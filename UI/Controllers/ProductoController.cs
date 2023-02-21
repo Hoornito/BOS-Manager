@@ -8,6 +8,8 @@ using Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+using SL.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +59,8 @@ namespace UI.Controllers
                 {
                     case EntityState.Added:
                         _productoService.AgregarProducto(productoDTO);
-
+                        
+                        LoggerManager.Info($"El producto {productoDTO.Nombre} fue añadido. Precio: {productoDTO.PrecioUnidad} Cantidad inicial: {productoDTO.Cantidad}");
                         break;
 
                     case EntityState.Modified:
@@ -70,6 +73,8 @@ namespace UI.Controllers
                         productoDTO.Cantidad += productoEntity.Cantidad;
                         productoDTO.PrecioUnidad = productoEntity.PrecioUnidad;
                         _productoService.ActualizarProducto(productoDTO);
+                        
+                        LoggerManager.Info($"El producto {productoDTO.Nombre} fue actualizado. Precio: ${productoDTO.PrecioUnidad}. Cantidad: {productoDTO.Cantidad}");
                         break;
 
                     case EntityState.Deleted:
@@ -86,6 +91,8 @@ namespace UI.Controllers
 
                         productoDTO.Active = false;
                         _productoService.ActualizarProducto(productoDTO);
+
+                        LoggerManager.Info($"El producto {productoDTO.Nombre} fue eliminado.");
                         #endregion
 
                         #region por si deseo Eliminar por completo el producto de mi base

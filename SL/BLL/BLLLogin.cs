@@ -30,7 +30,6 @@ namespace SL.BLL
 
         public bool Verify(UsuarioEntity data)
         {
-
             if (DALLogin.Current.Verify(data) == true)
             {
                 return true;
@@ -39,7 +38,6 @@ namespace SL.BLL
             {
                 return false;
             }
-
         }
     }
 }

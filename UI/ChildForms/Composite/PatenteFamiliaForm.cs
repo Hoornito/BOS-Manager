@@ -9,9 +9,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
-namespace UI.ChildForms
+namespace UI.ChildForms.Composite
 {
     public partial class PatenteFamiliaForm : Form
     {
@@ -93,7 +94,7 @@ namespace UI.ChildForms
 
                     my_menu.Items.Add("Eliminar").Name = "Eliminar";
 
-                    my_menu.Show(treeView, new Point(e.X, e.Y));
+                    my_menu.Show(treeView, new System.Drawing.Point(e.X, e.Y));
                     my_menu.ItemClicked += new ToolStripItemClickedEventHandler(my_menu_ItemClicked);
                 }
             }
@@ -119,10 +120,11 @@ namespace UI.ChildForms
                 
                 _permisosController.GuardarFamilia(seleccion);
                 MostrarFamilia();
+                CargarListasEnMemoria();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -130,6 +132,13 @@ namespace UI.ChildForms
         {
             //add patente to treeview
             var tmp = (PatenteEntity)this.cb_patentes.SelectedItem ?? ListaPatentes?.GetRange(cb_patentes.SelectedIndex == -1 ? 0 : cb_patentes.SelectedIndex, ListaPatentes.Count)?.FirstOrDefault() ?? throw new Exception("Ocurrió un error...");
+            //validarExistencia
+            if (_permisosController.ValidarExistencia(seleccion.Hijos.ToList(), tmp.Permiso))
+            {
+                System.Windows.MessageBox.Show("La patente ya existe en la familia");
+                return;
+            }
+
             seleccion.AgregarHijo(tmp);
             MostrarFamilia();
             
@@ -145,8 +154,41 @@ namespace UI.ChildForms
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
+
+        private void btn_agregar_Click(object sender, EventArgs e)
+        {
+            //add family to treeview
+            var tmp = (FamiliaEntity)this.cb_familia.SelectedItem ?? ListaFamilias?.GetRange(cb_familia.SelectedIndex == -1 ? 0 : cb_familia.SelectedIndex, ListaFamilias.Count)?.FirstOrDefault() ?? throw new Exception("Ocurrió un error...");
+            if (!_permisosController.ValidarFamilias(seleccion, tmp))
+                seleccion.AgregarHijo(tmp);
+            else
+            {
+                System.Windows.MessageBox.Show("Alguna patente hija existe en la familia seleccionada.");
+                return;
+            }
+
+            MostrarFamilia();
+        }
+        private void btn_crearFamilia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //add as root tb_CrearFamilia to treeview
+                FamiliaEntity familia = new FamiliaEntity();
+                familia.Nombre = tb_CrearFamilia.Text;
+                seleccion = (FamiliaEntity)_permisosController.GuardarComponente(familia, true);
+                CargarListasEnMemoria();
+                MostrarFamilia();
+            }
+            catch (Exception ex)
+            {
+
+                System.Windows.MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

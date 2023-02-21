@@ -17,5 +17,14 @@ namespace SL.Contratos.Controllers
         public IList<PatenteEntity> GetAllPatentes();
         public IList<FamiliaEntity> GetAllFamilias();
         public void GuardarPatente(string patente, string permiso);
+        public bool ValidarExistencia(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso);
+        public bool ValidarFamilias(FamiliaEntity familiaActual, FamiliaEntity familiaAgregar);
+        public IList<UsuarioEntity> ObtenerUsuarios();
+        public List<UsuarioEntity> GetAllUsuariosCompletos();
+        public void GuardarPermisos(UsuarioEntity u);
+        public UsuarioEntity GetUsuario(string nombre);
+        public UsuarioEntity GetUsuarioCompleto(string nombre);
+        
+
     }
 }

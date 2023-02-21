@@ -1,4 +1,5 @@
-﻿using SL.Domain.Models;
+﻿using SL.Domain.Entities;
+using SL.Domain.Models;
 
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace SL.Contratos.Services
         public void ActualizarPermiso(PermisoModel permiso);
 
         public void EliminarPermiso(PermisoModel permiso);
-
+        
+        public bool BuscarPermiso(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso);
+        public bool ValidarPermisosRepetidos(FamiliaEntity familiaActual, FamiliaEntity familiaAgregar);
     }
 }

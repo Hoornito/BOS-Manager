@@ -8,6 +8,8 @@ using Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+using SL.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,7 @@ namespace UI.Controllers
                 {
                     case EntityState.Added:
                         _pedidoService.CrearPedido(pedidoDTO);
+                        LoggerManager.Info($"El pedido {pedidoDTO.Id_Pedido} es iniciado.");
                         break;
 
                     case EntityState.Modified:
@@ -53,6 +56,7 @@ namespace UI.Controllers
                         {
                             pedidoDTO.Estado = pedidoEntity.Estado;
                             _pedidoService.ActualizarPedido(pedidoDTO);
+                            LoggerManager.Info($"El pedido {pedidoDTO.Id_Pedido} fue creado. Cliente: {pedidoDTO.Cliente.Nombre}. Total: ${pedidoDTO.Total}.");
                         }
                         else if(pedidoEntity.Estado == "Cancelado")
                         {
@@ -64,6 +68,7 @@ namespace UI.Controllers
                             pedidoDTO.Estado = pedidoEntity.Estado;
                             pedidoDTO.Descripción = pedidoEntity.Descripción;
                             _pedidoService.ActualizarPedido(pedidoDTO);
+                            LoggerManager.Info($"El pedido {pedidoDTO.Id_Pedido} fue cancelado.");
                         }
                         else
                         {

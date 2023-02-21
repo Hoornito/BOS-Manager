@@ -13,6 +13,8 @@ namespace SL.Domain.Entities
         Cocina,
         Permiso_test1,
         Permiso_test2,
-        Permiso_test3
+        Permiso_test3,
+        Caja,
+        Stock
     }
 }

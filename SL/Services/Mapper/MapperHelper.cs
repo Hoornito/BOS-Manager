@@ -25,7 +25,15 @@ namespace SL.Services.Mapper
             CreateMap<PatenteEntity, PermisoModel>().ReverseMap();
             CreateMap<Permiso_PermisoModel, FamiliaEntity>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.id_permiso_padre))
-                .ReverseMap(); 
+                .ReverseMap();
+            CreateMap<UsuarioEntity, UsuarioModel>()
+                .ForMember(dest => dest.id_usuario, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
+            CreateMap<UsuarioEntity, Usuario_PermisoModel>()
+                .ForMember(dest => dest.id_usuario, opt => opt.MapFrom(src => src.Id))
+                .ReverseMap();
+
+
         }
         
     }

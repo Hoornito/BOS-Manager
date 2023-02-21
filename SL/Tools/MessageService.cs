@@ -18,18 +18,18 @@ namespace SL.Tools
         public void SendMessage(string telefono, int Id_Pedido)
         {           
             
-            TwilioClient.Init(accountSid, authToken);
-            var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+14155238886"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+5491141639082"));
-            //var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+13514449343"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+549{telefono}"));
-            Console.WriteLine(message.Sid);
+            //TwilioClient.Init(accountSid, authToken);
+            //var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+14155238886"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+5491141639082"));
+            ////var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+13514449343"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+549{telefono}"));
+            //Console.WriteLine(message.Sid);
         }
 
         public void SendMessageRetiro(string telefono, int Id_Pedido)
         {
-            TwilioClient.Init(accountSid, authToken);
-            var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+14155238886"), body: $"Tu pedido {Id_Pedido} esta en listo para retirar!", to: new PhoneNumber("whatsapp:+5491141639082"));
-            //var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+13514449343"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+549{telefono}"));
-            Console.WriteLine(message.Sid);
+            //TwilioClient.Init(accountSid, authToken);
+            //var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+14155238886"), body: $"Tu pedido {Id_Pedido} esta en listo para retirar!", to: new PhoneNumber("whatsapp:+5491141639082"));
+            ////var message = MessageResource.Create(from: new PhoneNumber("whatsapp:+13514449343"), body: $"Tu pedido {Id_Pedido} esta en camino!", to: new PhoneNumber("whatsapp:+549{telefono}"));
+            //Console.WriteLine(message.Sid);
         }
     }
 }

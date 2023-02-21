@@ -1,5 +1,4 @@
-﻿using SL.Domain.Entities;
-using SL.Domain.Models;
+﻿using SL.Domain.Models;
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SL.Contratos.Repositories
 {
-    public interface IUsuariosRepository : IGenericRepository<UsuarioModel>
+    public interface IUsuario_PermisoRepository : IGenericRepository<Usuario_PermisoModel>
     {
 
     }

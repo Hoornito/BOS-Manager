@@ -2,6 +2,8 @@
 using Contratos.Services;
 
 using Domain.Models;
+using SL.Services;
+
 
 using System;
 using System.Linq;
@@ -26,7 +28,8 @@ namespace BLL.Services
                     productoModel.Id_Producto = Guid.NewGuid();
                     Insertar(productoModel);
 
-                    _unitOfWork.Save();                    
+                    _unitOfWork.Save();
+                                                            
                 }
                 else
                 {
@@ -54,6 +57,8 @@ namespace BLL.Services
             Eliminar(productoModel);
 
             _unitOfWork.Save();
+
         }
+
     }
 }

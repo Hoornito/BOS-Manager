@@ -8,6 +8,8 @@ using Domain.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+using SL.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +63,7 @@ namespace UI.Controllers
                         var producto = _productoService.Get(x => x.Nombre == detalleEntity.Nombre).FirstOrDefault();
                         detalleDTO.Id_Producto = producto.Id_Producto;
                         _detalleService.AgergarADetalle(detalleDTO);
+                        LoggerManager.Info($"Se agregó {detalleDTO.Cantidad} x {detalleDTO.Producto} al pedido {detalleDTO.Id_Pedido}");
                         break;
 
                     case EntityState.Modified:
@@ -79,6 +82,7 @@ namespace UI.Controllers
                         //detalleDTO.Active = false;
                         _detalleService.EliminarDeDetalle(detalleDTO);
                         //CustomerService.Current.Remove(customerDTO.IdCustomer);
+                        LoggerManager.Info($"Se eliminó {detalleDTO.Cantidad} x {detalleDTO.Producto} del pedido {detalleDTO.Id_Pedido}");
                         break;
                 }
 

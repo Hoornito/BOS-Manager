@@ -297,6 +297,7 @@ namespace UI
             this.MinimumSize = new System.Drawing.Size(1225, 623);
             this.Name = "MainForm";
             this.Text = "BOS Manager";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);

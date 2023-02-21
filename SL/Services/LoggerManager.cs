@@ -7,16 +7,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "config")]
 namespace SL.Services
 {
     public static class LoggerManager
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private static readonly log4net.ILog logPerformance = log4net.LogManager.GetLogger("performance");
-
-
-
+        private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logtest = LogManager.GetLogger("LoggerManager");
+        private static readonly ILog logPerformance = LogManager.GetLogger("performance");
+        
         public static void GenerateLog(Exception ex)
         {
             try
@@ -33,7 +32,16 @@ namespace SL.Services
         {
             log.Info(message);
         }
+        
+        public static void Error(string message)
+        {
+            log.Error(message);
+        }
 
+        public static void Warn(string message)
+        {
+            log.Warn(message);
+        }
         //#region singleton
 
         //private readonly static LoggerManager _instance = new LoggerManager();

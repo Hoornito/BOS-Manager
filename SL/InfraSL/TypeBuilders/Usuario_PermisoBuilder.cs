@@ -15,7 +15,7 @@ namespace SL.InfraSL.TypeBuilders
         public void Configure(EntityTypeBuilder<Usuario_PermisoModel> builder)
         {
             builder.HasKey(p => new { p.id_permiso, p.id_usuario });
-
+            
             builder.HasOne(p => p.UsuarioModel)
                    .WithMany(p => p.Usuario_Permisos)
                    .HasForeignKey(p => p.id_usuario);

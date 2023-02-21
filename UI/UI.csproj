@@ -51,4 +51,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ChildForms\Business\" />
+  </ItemGroup>
+
 </Project>

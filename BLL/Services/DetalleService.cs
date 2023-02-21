@@ -27,7 +27,8 @@ namespace BLL.Services
                 //producto.Get(x => x.Id_Producto == detalleModel.Id_Producto).FirstOrDefault();
                 if (producto.Cantidad < detalleModel.Cantidad)
                 {
-                    throw new Exception($"No hay stock suficiente del producto: {producto.Nombre}.");
+                    LoggerManager.Error($"No hay stock suficiente del producto: {producto.Nombre}.");
+                    throw new Exception($"No hay stock suficiente del producto: {producto.Nombre}.");                   
                 }
                 else
                 {
@@ -35,9 +36,12 @@ namespace BLL.Services
                     producto.Cantidad -= detalleModel.Cantidad;
                     _productoRepo.Update(producto);
                     _unitOfWork.Save();
-                    LoggerManager.Info($"Se agregó el detalle al pedido {detalleModel.Id_Pedido}");
+                    
+                    
+                    
                     if (producto.Cantidad < 25)
                     {
+                        LoggerManager.Warn($"El producto {producto.Nombre} tiene menos de 25 unidades en stock.");
                         throw new Exception($"Stock reducido del producto: {producto.Nombre}. \nQuedan: {producto.Cantidad} unidades.");
                     }
                 }
@@ -55,6 +59,7 @@ namespace BLL.Services
             Actualizar(detalleModel);
 
             _unitOfWork.Save();
+            
         }
 
         public void EliminarDeDetalle(DetalleModel detalleModel)
@@ -71,6 +76,7 @@ namespace BLL.Services
                 _productoRepo.Update(producto);
 
                 _unitOfWork.Save();
+                
             }
             catch (Exception)
             {
