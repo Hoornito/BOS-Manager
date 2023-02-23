@@ -50,8 +50,10 @@ namespace UI.ChildForms
         private void CrearPedidoId()
         {
             var resultado = _pedidoController.ObtenerUltimoPedido();
-
-            txtPedido.Text = (resultado.Id_Pedido + 1).ToString();
+            if (resultado == null)
+                txtPedido.Text = 1.ToString();
+            else
+                txtPedido.Text = (resultado.Id_Pedido + 1).ToString();
         }
         private void LimpiarForm()
         {
@@ -339,7 +341,11 @@ namespace UI.ChildForms
 
         private void PedidosForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(txtPedido.Text != "")
+            LeaveForm();
+        }
+        private void LeaveForm()
+        {
+            if (txtPedido.Text != "")
             {
                 PedidoEntity pedidoEntity = new PedidoEntity(EntityState.Modified);
                 pedidoEntity.Id_Pedido = Convert.ToInt32(txtPedido.Text);
@@ -351,6 +357,10 @@ namespace UI.ChildForms
                 _pedidoController.GuardarCambios(pedidoEntity);
                 LimpiarForm();
             }
+        }
+        private void PedidosForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LeaveForm();
         }
     }
 }

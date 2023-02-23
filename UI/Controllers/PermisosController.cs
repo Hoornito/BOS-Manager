@@ -5,6 +5,7 @@ using SL.Contratos.Controllers;
 using SL.Contratos.Services;
 using SL.Domain.Entities;
 using SL.Domain.Models;
+using SL.Services;
 
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,7 @@ namespace UI.Controllers
                 permiso.permiso = null;
 
             var help = _permisosService.CrearPermiso(permiso);
+            LoggerManager.Info($"Permiso: {permiso.nombre} creado correctamente.");
             componente.Id = help.id;
             return componente;
         }
@@ -56,9 +58,11 @@ namespace UI.Controllers
                 permiso_PermisoModel.id_permiso_hijo = item.Id;
 
                 listaPermisos.Add(permiso_PermisoModel);
+                LoggerManager.Info($"Permiso: {item.Nombre} agregado a la familia: {familia.Nombre} correctamente.");
             }
             Permiso_PermisoModel familiaModel = _mapper.Map<Permiso_PermisoModel>(familia);
             _permiso_permisoService.GuardarFamilia(familiaModel, listaPermisos);
+            LoggerManager.Info($"Familia: {familia.Nombre} guardada correctamente.");
             if (familia.Hijos.Count == 0)
             {
                 throw new Exception("No se puede guardar una familia sin hijos");
@@ -132,6 +136,7 @@ namespace UI.Controllers
             
             var permisoModel = _mapper.Map<PermisoModel>(patenteEntity);
             _permisosService.CrearPermiso(permisoModel);
+            LoggerManager.Info($"Permiso: {patente} creado correctamente.");
         }
         
         public bool ValidarExistencia(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso) => _permisosService.BuscarPermiso(permisos, tipoPermiso);
@@ -205,8 +210,10 @@ namespace UI.Controllers
                     permisopermiso.id_usuario = u.Id;
                     permisopermiso.id_permiso = item.Id;
                     h.Add(permisopermiso);
+                    LoggerManager.Info($"Permiso: {item.Nombre} agregado al usuario: {u.usuario}.");
                 }
                 _usuariosService.GuardarPermisos(permisoPadre, h);
+                LoggerManager.Info($"Permisos guardados correctamente para el usuario {u.usuario}.");
             }
             catch (Exception)
             {
@@ -238,9 +245,9 @@ namespace UI.Controllers
                 usuarios.Add(usuario);
                 return UsuariosConPermisos(usuarios);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
     }

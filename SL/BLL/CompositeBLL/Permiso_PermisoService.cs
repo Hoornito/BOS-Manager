@@ -21,23 +21,31 @@ namespace SL.BLL.CompositeBLL
         
         public void GuardarFamilia(Permiso_PermisoModel permiso, List<Permiso_PermisoModel> familia)
         {
-            
-            var listaFamilia = _repository.Get(x => x.id_permiso_padre == permiso.id_permiso_padre).ToList();
-            if(familia.Count > 0)
-                Eliminar(listaFamilia);
-            
-            //regla para no asignar una familia padre como familia hija
-            if (permiso.id_permiso_padre == permiso.id_permiso_hijo)
+            try
             {
-                throw new Exception("No se puede asignar una familia padre como familia hija");
+                var listaFamilia = _repository.Get(x => x.id_permiso_padre == permiso.id_permiso_padre).ToList();
+                if (familia.Count > 0)
+                    Eliminar(listaFamilia);
+
+                //regla para no asignar una familia padre como familia hija
+                if (permiso.id_permiso_padre == permiso.id_permiso_hijo)
+                {
+                    throw new Exception("No se puede asignar una familia padre como familia hija");
+                }
+                foreach (var item in familia)
+                {
+                    item.id_permiso_padre = permiso.id_permiso_padre;
+                    Insertar(item);
+                }
+
+                _unitOfWork.Save();
             }
-            foreach (var item in familia)
+            catch (Exception ex)
             {
-                item.id_permiso_padre = permiso.id_permiso_padre;
-                Insertar(item);
+
+                throw;
             }
             
-            _unitOfWork.Save();
         }
     }
 }

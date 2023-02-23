@@ -69,9 +69,14 @@ namespace UI.Controllers
                         //obtengo el id porque el get de entity no me trae el ID - para poder actualizar el objeto correcto
                         productoDTO = _productoService.GetById(productoDTO.Id_Producto);
                         productoDTO.Nombre = productoEntity.Nombre;
-                        productoDTO.Descripción = productoEntity.Descripción;
-                        productoDTO.Cantidad += productoEntity.Cantidad;
-                        productoDTO.PrecioUnidad = productoEntity.PrecioUnidad;
+                        if(!(productoEntity.Descripción == null || productoEntity.Descripción == string.Empty))
+                        {
+                            productoDTO.Descripción = productoEntity.Descripción;
+                        }
+                        if(!(productoEntity.PrecioUnidad == 0))
+                            productoDTO.PrecioUnidad = productoEntity.PrecioUnidad;
+
+                        productoDTO.Cantidad = productoEntity.Cantidad;
                         _productoService.ActualizarProducto(productoDTO);
                         
                         LoggerManager.Info($"El producto {productoDTO.Nombre} fue actualizado. Precio: ${productoDTO.PrecioUnidad}. Cantidad: {productoDTO.Cantidad}");

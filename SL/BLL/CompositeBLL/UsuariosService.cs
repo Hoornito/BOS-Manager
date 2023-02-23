@@ -30,10 +30,19 @@ namespace SL.BLL.CompositeBLL
 
         public void CrearUsuario(UsuarioModel usuario)
         {
-            var password = HashPassword(usuario.pw);
-            usuario.pw = password;
-            _repository.Insert(usuario);
-            _unitOfWork.Save();
+            try
+            {
+                var password = HashPassword(usuario.pw);
+                usuario.pw = password;
+                _repository.Insert(usuario);
+                _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.GenerateLog(ex);
+                throw;
+            }
+            
         }
 
         public void GuardarPermisos(Usuario_PermisoModel u, List<Usuario_PermisoModel> permisos)
@@ -49,8 +58,9 @@ namespace SL.BLL.CompositeBLL
                 }
                 _unitOfWork.Save();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LoggerManager.GenerateLog(ex);
                 throw;
             }
         }

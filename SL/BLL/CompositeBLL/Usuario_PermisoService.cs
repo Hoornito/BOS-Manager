@@ -2,6 +2,7 @@
 using SL.Contratos.Repositories;
 using SL.Contratos.Services;
 using SL.Domain.Models;
+using SL.Services;
 
 using System;
 using System.Collections.Generic;
@@ -28,20 +29,30 @@ namespace SL.BLL.CompositeBLL
             }
             catch (Exception ex)
             {
-                throw ex;
+                LoggerManager.GenerateLog(ex);
+                throw;
             }
         }
 
         public void GuardarPermisos(Usuario_PermisoModel usuario, List<Usuario_PermisoModel> permisos)
         {
-            var PermisosDelUsuario = Get(x => x.id_usuario == usuario.id_usuario, tracking: true).ToList();
-            Eliminar(PermisosDelUsuario);
-
-            foreach (var permiso in permisos)
+            try
             {
-                Insertar(permiso);
+                var PermisosDelUsuario = Get(x => x.id_usuario == usuario.id_usuario, tracking: true).ToList();
+                Eliminar(PermisosDelUsuario);
+
+                foreach (var permiso in permisos)
+                {
+                    Insertar(permiso);
+                }
+                _unitOfWork.Save();
             }
-            _unitOfWork.Save();
+            catch (Exception ex)
+            {
+                LoggerManager.GenerateLog(ex);
+                throw;
+            }
+            
         }
     }
 }

@@ -52,11 +52,12 @@ namespace UI.Controllers
                         //pedidoDTO.Id_Cliente = _pedidoService.Get(x => x.Id_Pedido == pedidoDTO.Id_Pedido).FirstOrDefault().Id_Cliente;
                         //obtengo el id porque el get de entity no me trae el ID - para poder actualizar el objeto correcto
                         pedidoDTO = _pedidoService.GetById(pedidoDTO.Id_Pedido);
-                        if(pedidoEntity.Estado == "Finalizado")
+                        //pedidoDTO = _pedidoService.Get(x => x.Id_Pedido == pedidoEntity.Id_Pedido, includeProperties: "Cliente").FirstOrDefault();
+                        if (pedidoEntity.Estado == "Finalizado")
                         {
                             pedidoDTO.Estado = pedidoEntity.Estado;
                             _pedidoService.ActualizarPedido(pedidoDTO);
-                            LoggerManager.Info($"El pedido {pedidoDTO.Id_Pedido} fue creado. Cliente: {pedidoDTO.Cliente.Nombre}. Total: ${pedidoDTO.Total}.");
+                            LoggerManager.Info($"El pedido {pedidoDTO.Id_Pedido} fue creado. Cliente: {pedidoDTO.TelefonoContacto}. Total: ${pedidoDTO.Total}.");
                         }
                         else if(pedidoEntity.Estado == "Cancelado")
                         {
@@ -124,9 +125,17 @@ namespace UI.Controllers
 
         public PedidoEntity ObtenerUltimoPedido()
         {
-            var pedido = _mapper.Map<PedidoEntity>(_pedidoService.Get().Last());
+            if (_pedidoService.Get().FirstOrDefault() == null)
+            {
+                return null;
+            }
+            else
+            {
+                var pedido = _mapper.Map<PedidoEntity>(_pedidoService.Get().Last());
 
-            return pedido;
+                return pedido;
+            }
+            
         }
 
         public PedidoEntity ObtenerPedido(int id)

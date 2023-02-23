@@ -3,6 +3,7 @@ using SL.Contratos.Repositories;
 using SL.Contratos.Services;
 using SL.Domain.Entities;
 using SL.Domain.Models;
+using SL.Services;
 
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,8 @@ namespace SL.BLL.CompositeBLL
             }
             catch (Exception ex)
             {
-                throw ex;
+                LoggerManager.GenerateLog(ex);
+                throw;
             }
         }
 
@@ -58,15 +60,23 @@ namespace SL.BLL.CompositeBLL
 
         public bool BuscarPermiso(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso)
         {
-            List<PatenteEntity> patentes = new List<PatenteEntity>();
-            List<FamiliaEntity> familias = new List<FamiliaEntity>();
-            patentes = permisos.OfType<PatenteEntity>().ToList();
-            familias = permisos.OfType<FamiliaEntity>().ToList();
-            bool Result = false;
-            Result = RecorrerPatentes(patentes, tipoPermiso);
-            if (!Result)
-                Result = RecorrerFamilias(familias, tipoPermiso);
-            return Result;
+            try
+            {
+                List<PatenteEntity> patentes = new List<PatenteEntity>();
+                List<FamiliaEntity> familias = new List<FamiliaEntity>();
+                patentes = permisos.OfType<PatenteEntity>().ToList();
+                familias = permisos.OfType<FamiliaEntity>().ToList();
+                bool Result = false;
+                Result = RecorrerPatentes(patentes, tipoPermiso);
+                if (!Result)
+                    Result = RecorrerFamilias(familias, tipoPermiso);
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                LoggerManager.GenerateLog(ex);
+                throw;
+            }
         }
         
         public bool ValidarPermisosRepetidos(FamiliaEntity familiaActual, FamiliaEntity familiaAgregar)
@@ -86,8 +96,9 @@ namespace SL.BLL.CompositeBLL
 
                 return EstaRepetido;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LoggerManager.GenerateLog(ex);
                 throw;
             }
         }

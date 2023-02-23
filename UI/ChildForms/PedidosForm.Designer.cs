@@ -59,7 +59,6 @@ namespace UI.ChildForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(36, 91);
             this.label1.Name = "label1";
@@ -397,6 +396,7 @@ namespace UI.ChildForms
             this.Controls.Add(this.label1);
             this.Name = "PedidosForm";
             this.Text = "PedidosForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PedidosForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PedidosForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

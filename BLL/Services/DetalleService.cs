@@ -36,9 +36,7 @@ namespace BLL.Services
                     producto.Cantidad -= detalleModel.Cantidad;
                     _productoRepo.Update(producto);
                     _unitOfWork.Save();
-                    
-                    
-                    
+
                     if (producto.Cantidad < 25)
                     {
                         LoggerManager.Warn($"El producto {producto.Nombre} tiene menos de 25 unidades en stock.");
