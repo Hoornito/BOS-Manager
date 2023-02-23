@@ -38,4 +38,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="InfraSL\Migrations\" />
+  </ItemGroup>
+
 </Project>

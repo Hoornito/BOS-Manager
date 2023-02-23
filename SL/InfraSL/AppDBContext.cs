@@ -28,7 +28,8 @@ namespace SL.InfraSL
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-HOT45OL;Initial Catalog=Composite;Integrated Security=True");
+                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-HOT45OL;Initial Catalog=Composite;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Composite;Integrated Security=True");
                 //base.OnConfiguring(optionsBuilder);
             }
 
