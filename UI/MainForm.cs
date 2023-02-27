@@ -30,6 +30,7 @@ namespace UI
         private readonly IFacturaController _facturaController;
         private readonly IPermisosController _permisosController;
         private readonly IUsuariosController _usuariosController;
+        private readonly ILoggerController _loggerController;
         public MainForm(
             IClienteController clienteController,
             IPedidoController pedidoController,
@@ -38,6 +39,7 @@ namespace UI
             IFacturaController facturaController,
             IPermisosController permisosController,
             IUsuariosController usuariosController,
+            ILoggerController loggerController,
             UsuarioEntity user)
         {
             _user = user;
@@ -48,6 +50,7 @@ namespace UI
             _facturaController = facturaController;
             _permisosController = permisosController;
             _usuariosController = usuariosController;
+            _loggerController = loggerController;
             InitializeComponent();
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
@@ -181,7 +184,7 @@ namespace UI
         private void btnAdministracion_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color6);
-            OpenChildForm(new AdministracionForm(_permisosController, _usuariosController));
+            OpenChildForm(new AdministracionForm(_permisosController, _usuariosController, _loggerController));
         }
 
         private void iconCurrentChildForm_Click(object sender, EventArgs e)
@@ -204,41 +207,58 @@ namespace UI
             btnFacturacion.Visible = false;
             btnStock.Visible = false;
             btnVisualizar.Visible = false;
-            
+
             foreach (var permiso in _user.Permisos)
             {
-                if (permiso.Permiso == TipoPermiso.Administrador)
+                //if permiso contains hijos, then read permisos in hijos
+                if (permiso.Hijos.Count > 0)
                 {
-                    btnAdministracion.Visible = true;
-                    btnReportes.Visible = true;
-                    btnClientes.Visible = true;
-                    btnPedidos.Visible = true;
-                    btnFacturacion.Visible = true;
-                    btnStock.Visible = true;
-                    btnVisualizar.Visible = true;
+                    foreach (var hijo in permiso.Hijos)
+                    {
+                        HabilitarBotones(hijo);
+                    }
                 }
-                else if (permiso.Permiso == TipoPermiso.Cocina)
-                {
-                    btnVisualizar.Visible = true;
-                }
-                else if (permiso.Permiso == TipoPermiso.Caja)
-                {
-                    btnPedidos.Visible = true;
-                    btnFacturacion.Visible = true;
-                    btnVisualizar.Visible = true;
-                }
-                else if (permiso.Permiso == TipoPermiso.Stock)
-                {
-                    btnStock.Visible = true;
-                }
+                HabilitarBotones(permiso);
             }
-            
+
+        }
+        private void HabilitarBotones(ComponenteEntity permiso)
+        {
+            if (permiso.Permiso == TipoPermiso.Administrador)
+            {
+                btnAdministracion.Visible = true;
+                btnReportes.Visible = true;
+                btnClientes.Visible = true;
+                btnPedidos.Visible = true;
+                btnFacturacion.Visible = true;
+                btnStock.Visible = true;
+                btnVisualizar.Visible = true;
+            }
+            else if (permiso.Permiso == TipoPermiso.Cocina)
+            {
+                btnVisualizar.Visible = true;
+            }
+            else if (permiso.Permiso == TipoPermiso.Caja)
+            {
+                btnPedidos.Visible = true;
+                btnFacturacion.Visible = true;
+                btnVisualizar.Visible = true;
+            }
+            else if (permiso.Permiso == TipoPermiso.Stock)
+            {
+                btnStock.Visible = true;
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.ExitThread();
-            Environment.Exit(0);
+            LoginForm loginForm = new LoginForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController);
+            loginForm.Show();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

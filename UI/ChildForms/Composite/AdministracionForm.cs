@@ -1,5 +1,6 @@
 ﻿using Contratos.Controllers;
 
+using SL.BLL;
 using SL.Contratos.Controllers;
 using SL.Domain.Entities;
 
@@ -21,12 +22,14 @@ namespace UI.ChildForms.Composite
     {
         private readonly IPermisosController _permisosController;
         private readonly IUsuariosController _usuariosController;
+        private readonly ILoggerController _loggerController;
         private Form currentChildForm;
-        public AdministracionForm(IPermisosController permisosController, IUsuariosController usuariosController)
+        public AdministracionForm(IPermisosController permisosController, IUsuariosController usuariosController, ILoggerController loggerController)
         {
             _permisosController = permisosController;
             _usuariosController = usuariosController;
-            
+            _loggerController = loggerController;
+
             InitializeComponent();
             TranducirForm.Current.TraducirFormulario(this);
         }
@@ -61,6 +64,16 @@ namespace UI.ChildForms.Composite
         private void btn_CrearUsuario_Click(object sender, EventArgs e)
         {
             OpenChildForm(new CrearUsuarioForm(_usuariosController));
+        }
+
+        private void btn_GenerarBackUp_Click(object sender, EventArgs e)
+        {
+            BLLBkup.Current.GenerateBackup();
+        }
+
+        private void btn_Bitacora_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BitacoraForm(_loggerController));
         }
     }
 }

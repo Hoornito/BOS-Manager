@@ -36,15 +36,15 @@ namespace BLL.Services
                 Actualizar(pedidoModel);
                 _unitOfWork.Save();
 
-                
-                if (pedidoModel.Estado == "Finalizado")
-                {
-                    MessageService messageService = new MessageService();
-                    if (pedidoModel.Retiro == "Repartir")
-                        messageService.SendMessage(pedidoModel.TelefonoContacto, pedidoModel.Id_Pedido);
-                    else
-                        messageService.SendMessageRetiro(pedidoModel.TelefonoContacto, pedidoModel.Id_Pedido);
-                }
+                pedidoModel = Get(x => x.Id_Pedido == pedidoModel.Id_Pedido, includeProperties: "Cliente").FirstOrDefault();
+                //if (pedidoModel.Estado == "Finalizado")
+                //{
+                //    MessageService messageService = new MessageService();
+                //    if (pedidoModel.Retiro == "Repartir")
+                //        messageService.SendMessage(pedidoModel.TelefonoContacto, pedidoModel);
+                //    else
+                //        messageService.SendMessageRetiro(pedidoModel.TelefonoContacto, pedidoModel);
+                //}
             }
             catch (Exception)
             {

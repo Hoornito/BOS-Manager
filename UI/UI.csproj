@@ -13,6 +13,7 @@
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
     <PackageReference Include="Geocoding.Google" Version="4.0.1" />
     <PackageReference Include="GoogleMaps.LocationServices" Version="1.2.0.5" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="log4net" Version="2.0.13" />
     <PackageReference Include="Maikebing.System.Windows.Forms.DataVisualization" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />

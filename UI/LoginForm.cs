@@ -29,6 +29,7 @@ namespace UI
         private readonly IFacturaController _facturaController;
         private readonly IPermisosController _permisosController;
         private readonly IUsuariosController _usuariosController;
+        private readonly ILoggerController _loggerController;
 
         public LoginForm(
             IClienteController clienteController,
@@ -37,7 +38,8 @@ namespace UI
             IProductoController productoController,
             IFacturaController facturaController,
             IPermisosController permisosController,
-            IUsuariosController usuariosController)
+            IUsuariosController usuariosController,
+            ILoggerController loggerController)
         {
             _detalleController = detalleController;
             _clienteController = clienteController;
@@ -46,6 +48,7 @@ namespace UI
             _facturaController = facturaController;
             _permisosController = permisosController;
             _usuariosController = usuariosController;
+            _loggerController = loggerController;
             InitializeComponent();
             TranducirForm.Current.TraducirFormulario(this);
         }
@@ -58,7 +61,7 @@ namespace UI
             if (_usuariosController.Login(user))
             {
                 user = _permisosController.GetUsuario(user.usuario);
-                MainForm mainForm = new MainForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, user);
+                MainForm mainForm = new MainForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController, user);
                 mainForm.Show();
                 this.Hide();
             }

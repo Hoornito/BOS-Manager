@@ -31,6 +31,8 @@ namespace SL.Tools
 
         #endregion
 
+        
+
         public void imprimir(PrintPageEventArgs e, int Id_Factura, string nombreCliente, string dirección, string teléfono)
         {
             Font font = new Font("Arial", 14);

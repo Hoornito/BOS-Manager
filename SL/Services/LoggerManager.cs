@@ -15,14 +15,14 @@ namespace SL.Services
         private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static readonly ILog logtest = LogManager.GetLogger("LoggerManager");
         private static readonly ILog logPerformance = LogManager.GetLogger("performance");
-        
+
         public static void GenerateLog(Exception ex)
         {
             try
             {
                 log.Error(ex);
             }
-            catch 
+            catch
             {
 
             }
@@ -32,7 +32,7 @@ namespace SL.Services
         {
             log.Info(message);
         }
-        
+
         public static void Error(string message)
         {
             log.Error(message);

@@ -31,8 +31,10 @@
             this.btnRoles = new FontAwesome.Sharp.IconButton();
             this.btnUsuarios = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelAdmin = new System.Windows.Forms.Panel();
+            this.btn_GenerarBackUp = new FontAwesome.Sharp.IconButton();
+            this.btn_Bitacora = new FontAwesome.Sharp.IconButton();
             this.btn_CrearUsuario = new FontAwesome.Sharp.IconButton();
+            this.panelAdmin = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,22 +74,50 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_GenerarBackUp);
+            this.panel1.Controls.Add(this.btn_Bitacora);
             this.panel1.Controls.Add(this.btn_CrearUsuario);
             this.panel1.Controls.Add(this.btnRoles);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(131, 468);
+            this.panel1.Size = new System.Drawing.Size(131, 562);
             this.panel1.TabIndex = 2;
             // 
-            // panelAdmin
+            // btn_GenerarBackUp
             // 
-            this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAdmin.Location = new System.Drawing.Point(131, 0);
-            this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(671, 468);
-            this.panelAdmin.TabIndex = 3;
+            this.btn_GenerarBackUp.FlatAppearance.BorderSize = 0;
+            this.btn_GenerarBackUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_GenerarBackUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_GenerarBackUp.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.btn_GenerarBackUp.IconColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_GenerarBackUp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_GenerarBackUp.Location = new System.Drawing.Point(12, 439);
+            this.btn_GenerarBackUp.Name = "btn_GenerarBackUp";
+            this.btn_GenerarBackUp.Size = new System.Drawing.Size(106, 103);
+            this.btn_GenerarBackUp.TabIndex = 4;
+            this.btn_GenerarBackUp.Text = "Back up";
+            this.btn_GenerarBackUp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_GenerarBackUp.UseVisualStyleBackColor = true;
+            this.btn_GenerarBackUp.Click += new System.EventHandler(this.btn_GenerarBackUp_Click);
+            // 
+            // btn_Bitacora
+            // 
+            this.btn_Bitacora.FlatAppearance.BorderSize = 0;
+            this.btn_Bitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Bitacora.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Bitacora.IconChar = FontAwesome.Sharp.IconChar.Book;
+            this.btn_Bitacora.IconColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Bitacora.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Bitacora.Location = new System.Drawing.Point(12, 330);
+            this.btn_Bitacora.Name = "btn_Bitacora";
+            this.btn_Bitacora.Size = new System.Drawing.Size(106, 103);
+            this.btn_Bitacora.TabIndex = 3;
+            this.btn_Bitacora.Text = "Bitácora";
+            this.btn_Bitacora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_Bitacora.UseVisualStyleBackColor = true;
+            this.btn_Bitacora.Click += new System.EventHandler(this.btn_Bitacora_Click);
             // 
             // btn_CrearUsuario
             // 
@@ -106,12 +136,20 @@
             this.btn_CrearUsuario.UseVisualStyleBackColor = true;
             this.btn_CrearUsuario.Click += new System.EventHandler(this.btn_CrearUsuario_Click);
             // 
+            // panelAdmin
+            // 
+            this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAdmin.Location = new System.Drawing.Point(131, 0);
+            this.panelAdmin.Name = "panelAdmin";
+            this.panelAdmin.Size = new System.Drawing.Size(720, 562);
+            this.panelAdmin.TabIndex = 3;
+            // 
             // AdministracionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
-            this.ClientSize = new System.Drawing.Size(802, 468);
+            this.ClientSize = new System.Drawing.Size(851, 562);
             this.Controls.Add(this.panelAdmin);
             this.Controls.Add(this.panel1);
             this.Name = "AdministracionForm";
@@ -128,5 +166,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelAdmin;
         private FontAwesome.Sharp.IconButton btn_CrearUsuario;
+        private FontAwesome.Sharp.IconButton btn_GenerarBackUp;
+        private FontAwesome.Sharp.IconButton btn_Bitacora;
     }
 }

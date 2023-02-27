@@ -101,7 +101,7 @@ namespace UI.ChildForms
             this.txtPedido.Location = new System.Drawing.Point(117, 88);
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.ReadOnly = true;
-            this.txtPedido.Size = new System.Drawing.Size(121, 23);
+            this.txtPedido.Size = new System.Drawing.Size(90, 23);
             this.txtPedido.TabIndex = 4;
             // 
             // txtDireccion
@@ -109,7 +109,7 @@ namespace UI.ChildForms
             this.txtDireccion.Location = new System.Drawing.Point(117, 146);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ReadOnly = true;
-            this.txtDireccion.Size = new System.Drawing.Size(121, 23);
+            this.txtDireccion.Size = new System.Drawing.Size(235, 23);
             this.txtDireccion.TabIndex = 5;
             // 
             // cbCliente
@@ -120,7 +120,7 @@ namespace UI.ChildForms
             this.cbCliente.FormattingEnabled = true;
             this.cbCliente.Location = new System.Drawing.Point(117, 117);
             this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(121, 23);
+            this.cbCliente.Size = new System.Drawing.Size(235, 23);
             this.cbCliente.TabIndex = 6;
             this.cbCliente.SelectedIndexChanged += new System.EventHandler(this.cbCliente_SelectedIndexChanged);
             this.cbCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCliente_KeyPress);
@@ -134,7 +134,7 @@ namespace UI.ChildForms
             this.cbProducto.FormattingEnabled = true;
             this.cbProducto.Location = new System.Drawing.Point(117, 175);
             this.cbProducto.Name = "cbProducto";
-            this.cbProducto.Size = new System.Drawing.Size(121, 23);
+            this.cbProducto.Size = new System.Drawing.Size(235, 23);
             this.cbProducto.TabIndex = 7;
             this.cbProducto.SelectedIndexChanged += new System.EventHandler(this.cbProducto_SelectedIndexChanged);
             // 
@@ -189,7 +189,7 @@ namespace UI.ChildForms
             this.btnAgregar.IconColor = System.Drawing.Color.White;
             this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAgregar.IconSize = 22;
-            this.btnAgregar.Location = new System.Drawing.Point(266, 206);
+            this.btnAgregar.Location = new System.Drawing.Point(367, 206);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(86, 37);
             this.btnAgregar.TabIndex = 11;
@@ -204,15 +204,15 @@ namespace UI.ChildForms
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 262);
+            this.dataGridView1.Location = new System.Drawing.Point(36, 271);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(408, 176);
+            this.dataGridView1.Size = new System.Drawing.Size(681, 232);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
@@ -226,7 +226,7 @@ namespace UI.ChildForms
             this.btnQuitar.IconColor = System.Drawing.Color.White;
             this.btnQuitar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnQuitar.IconSize = 22;
-            this.btnQuitar.Location = new System.Drawing.Point(358, 205);
+            this.btnQuitar.Location = new System.Drawing.Point(459, 205);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(86, 37);
             this.btnQuitar.TabIndex = 13;
@@ -244,7 +244,7 @@ namespace UI.ChildForms
             this.btnComenzar.IconColor = System.Drawing.Color.White;
             this.btnComenzar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnComenzar.IconSize = 24;
-            this.btnComenzar.Location = new System.Drawing.Point(257, 79);
+            this.btnComenzar.Location = new System.Drawing.Point(358, 79);
             this.btnComenzar.Name = "btnComenzar";
             this.btnComenzar.Size = new System.Drawing.Size(95, 29);
             this.btnComenzar.TabIndex = 15;
@@ -266,17 +266,17 @@ namespace UI.ChildForms
             // 
             // txtDescripción
             // 
-            this.txtDescripción.Location = new System.Drawing.Point(471, 107);
+            this.txtDescripción.Location = new System.Drawing.Point(572, 107);
             this.txtDescripción.Multiline = true;
             this.txtDescripción.Name = "txtDescripción";
-            this.txtDescripción.Size = new System.Drawing.Size(145, 81);
+            this.txtDescripción.Size = new System.Drawing.Size(145, 125);
             this.txtDescripción.TabIndex = 31;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(471, 86);
+            this.label6.Location = new System.Drawing.Point(572, 86);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 15);
             this.label6.TabIndex = 32;
@@ -292,7 +292,7 @@ namespace UI.ChildForms
             this.btnFinalizar.IconColor = System.Drawing.Color.White;
             this.btnFinalizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFinalizar.IconSize = 24;
-            this.btnFinalizar.Location = new System.Drawing.Point(257, 114);
+            this.btnFinalizar.Location = new System.Drawing.Point(358, 114);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(95, 29);
             this.btnFinalizar.TabIndex = 33;
@@ -311,7 +311,7 @@ namespace UI.ChildForms
             this.btnCancelar.IconColor = System.Drawing.Color.White;
             this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCancelar.IconSize = 24;
-            this.btnCancelar.Location = new System.Drawing.Point(257, 149);
+            this.btnCancelar.Location = new System.Drawing.Point(358, 149);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(95, 29);
             this.btnCancelar.TabIndex = 34;
@@ -334,7 +334,7 @@ namespace UI.ChildForms
             // 
             this.radioLocal.AutoSize = true;
             this.radioLocal.ForeColor = System.Drawing.Color.White;
-            this.radioLocal.Location = new System.Drawing.Point(364, 109);
+            this.radioLocal.Location = new System.Drawing.Point(465, 109);
             this.radioLocal.Name = "radioLocal";
             this.radioLocal.Size = new System.Drawing.Size(53, 19);
             this.radioLocal.TabIndex = 36;
@@ -346,7 +346,7 @@ namespace UI.ChildForms
             this.radioRepartidor.AutoSize = true;
             this.radioRepartidor.Checked = true;
             this.radioRepartidor.ForeColor = System.Drawing.Color.White;
-            this.radioRepartidor.Location = new System.Drawing.Point(364, 134);
+            this.radioRepartidor.Location = new System.Drawing.Point(465, 134);
             this.radioRepartidor.Name = "radioRepartidor";
             this.radioRepartidor.Size = new System.Drawing.Size(80, 19);
             this.radioRepartidor.TabIndex = 37;
@@ -358,7 +358,7 @@ namespace UI.ChildForms
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(364, 88);
+            this.label8.Location = new System.Drawing.Point(465, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 15);
             this.label8.TabIndex = 38;
@@ -369,7 +369,7 @@ namespace UI.ChildForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
-            this.ClientSize = new System.Drawing.Size(660, 451);
+            this.ClientSize = new System.Drawing.Size(798, 515);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.radioRepartidor);
             this.Controls.Add(this.radioLocal);
