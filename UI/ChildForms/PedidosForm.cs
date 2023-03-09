@@ -14,7 +14,7 @@ using UI.Tools.LanguageManager;
 
 namespace UI.ChildForms
 {
-    public partial class PedidosForm : Form , ICommPedidoCliente
+    public partial class PedidosForm : Form, ICommPedidoCliente
     {
         IPedidoController _pedidoController;
         IDetalleController _detalleController;
@@ -27,7 +27,7 @@ namespace UI.ChildForms
             _productoController = productoController;
             _clienteController = clienteController;
             InitializeComponent();
-            LlenarComboBoxProductos();
+
             LlenarComboBoxClientes();
             TranducirForm.Current.TraducirFormulario(this);
         }
@@ -60,12 +60,12 @@ namespace UI.ChildForms
             txtPedido.Text = string.Empty;
             txtDireccion.Text = string.Empty;
             cbCliente.Text = string.Empty;
-            cbProducto.Text = string.Empty;
+            cboTipoProducto.Text = string.Empty;
             txtDescripción.Text = string.Empty;
             dataGridView1.DataSource = null;
             txtCant.Text = "1";
             cbCliente.Enabled = false;
-            cbProducto.Enabled = false;
+            cboTipoProducto.Enabled = false;
             btnFinalizar.Enabled = false;
             btnComenzar.Enabled = true;
             txtDescripción.Enabled = false;
@@ -85,27 +85,38 @@ namespace UI.ChildForms
             var listaDetalle = _detalleController.ObtenerDetalle(pedido).Select
             (x => new
             {
+                Tipo = x.Tipo,
                 Nombre = x.Nombre,
                 Precio = x.PrecioUnidad,
                 Cantidad = x.Cantidad,
                 SubTotal = x.SubTotal,
             });
-            
+
             dataGridView1.DataSource = listaDetalle.ToList();
         }
-
         private void LlenarComboBoxProductos()
         {
-            var listaProductos = _productoController.GetAll();
-
-            foreach (var item in listaProductos)
+            cboProducto.Items.Clear();
+            if (cboTipoProducto.Text == "Empanadas")
             {
-                cbProducto.Items.Add(item.Nombre);
+                var listaProductos = _productoController.GetAll().Where(x => x.Tipo == "Empanada");
+                foreach (var item in listaProductos)
+                {
+                    cboProducto.Items.Add(item.Nombre);
+                }
+            }
+            else
+            {
+                var listaProductos = _productoController.GetAll().Where(x => x.Tipo == "Pizza");
+                foreach (var item in listaProductos)
+                {
+                    cboProducto.Items.Add(item.Nombre);
+                }
             }
         }
         private string SeleccionarModoRetiro()
         {
-            if(radioLocal.Checked)
+            if (radioLocal.Checked)
             {
                 return "Local";
             }
@@ -128,7 +139,7 @@ namespace UI.ChildForms
         {
             try
             {
-                ProductoAddForm registrarProducto = new ProductoAddForm(_productoController, cbProducto.Text);
+                ProductoAddForm registrarProducto = new ProductoAddForm(_productoController, cboProducto.Text);
                 registrarProducto.ShowDialog();
             }
             catch (Exception ex)
@@ -150,7 +161,7 @@ namespace UI.ChildForms
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         public void RefeshDir(ClienteEntity cliente)
         {
             txtDireccion.Text = cliente.Dirección;
@@ -174,14 +185,15 @@ namespace UI.ChildForms
             {
                 DetalleEntity detalle = new DetalleEntity(EntityState.Added);
 
+                detalle.Tipo = cboTipoProducto.Text.Remove(cboTipoProducto.Text.Length - 1, 1);
                 detalle.Id_Pedido = Convert.ToInt32(txtPedido.Text);
-                detalle.Nombre = cbProducto.Text;
+                detalle.Nombre = cboProducto.Text;
                 detalle.Cantidad = Convert.ToInt32(txtCant.Text);
 
                 _detalleController.GuardarCambios(detalle);
 
                 LlenarGrilla();
-                cbProducto.SelectedItem = null;
+                cboProducto.SelectedItem = null;
                 btnAgregar.Enabled = false;
                 btnFinalizar.Enabled = true;
             }
@@ -228,7 +240,8 @@ namespace UI.ChildForms
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             DetalleEntity detalle = new DetalleEntity(EntityState.Deleted);
-            detalle.Nombre = (string)dataGridView1.SelectedCells[0].Value;
+            detalle.Nombre = (string)dataGridView1.SelectedCells[1].Value;
+            detalle.Tipo = (string)dataGridView1.SelectedCells[0].Value;
             detalle.Id_Pedido = Convert.ToInt32(txtPedido.Text);
             btnQuitar.Enabled = false;
             _detalleController.GuardarCambios(detalle);
@@ -243,7 +256,7 @@ namespace UI.ChildForms
                 CrearPedidoId();
                 pedidoEntity.Id_Pedido = Convert.ToInt32(txtPedido.Text);
                 cbCliente.Enabled = true;
-                cbProducto.Enabled = true;
+                cboTipoProducto.Enabled = true;
                 _pedidoController.GuardarCambios(pedidoEntity);
                 btnComenzar.Enabled = false;
                 txtDescripción.Enabled = true;
@@ -255,7 +268,7 @@ namespace UI.ChildForms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
 
         private void cbCliente_Leave(object sender, EventArgs e)
@@ -264,7 +277,7 @@ namespace UI.ChildForms
             var cliente = _clienteController.GetCliente(cbCliente.Text);
             //Esta bien hacer un if así aca en el front? o sería mejor manejarlo en las excepciones
             //como sería con las excepciones? puedo hacer referencias a los forms (hacer uso de system.windows.forms)?
-            if(cliente == null)
+            if (cliente == null)
             {
                 DialogResult d;
                 d = MessageBox.Show("El cliente ingresado no existe, desea registrarlo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -303,7 +316,7 @@ namespace UI.ChildForms
 
                 throw;
             }
-            
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -336,13 +349,14 @@ namespace UI.ChildForms
 
         private void cbProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnAgregar.Enabled = true;
+            LlenarComboBoxProductos();
         }
 
         private void PedidosForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             LeaveForm();
         }
+
         private void LeaveForm()
         {
             if (txtPedido.Text != "")
@@ -358,9 +372,20 @@ namespace UI.ChildForms
                 LimpiarForm();
             }
         }
+
         private void PedidosForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             LeaveForm();
+        }
+
+        private void cboProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAgregar.Enabled = true;
+        }
+
+        private void PedidosForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

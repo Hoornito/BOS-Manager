@@ -23,6 +23,7 @@ namespace SL.Domain.Entities
         public string email { get; set; }
         public string telefono { get; set; }
         public string dni { get; set; }
+        public string idioma { get; set; }
         
         public bool Access { get; set; }
         public List<ComponenteEntity> Permisos

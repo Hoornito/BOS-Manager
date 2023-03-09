@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using UI.Tools.LanguageManager;
+
 namespace UI.ChildForms.Composite
 {
     public partial class CrearUsuarioForm : Form
@@ -19,7 +21,9 @@ namespace UI.ChildForms.Composite
         public CrearUsuarioForm(IUsuariosController usuariosController)
         {
             _usuariosController = usuariosController;
+
             InitializeComponent();
+            TranducirForm.Current.TraducirFormulario(this);
         }
 
         private void btn_Crear_Click(object sender, EventArgs e)

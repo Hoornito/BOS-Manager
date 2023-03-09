@@ -14,5 +14,6 @@ namespace SL.Contratos.Services
         public void GuardarPermisos(Usuario_PermisoModel u, List<Usuario_PermisoModel> permisos);
         public void CrearUsuario(UsuarioModel usuario);
         public bool Login(string usuario, string password);
+        public void ActualizarIdioma(UsuarioModel usuario);
     }
 }

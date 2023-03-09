@@ -23,13 +23,20 @@ namespace BLL.Services
 {
     public class FacturaService : GenericService<FacturaModel>, IFacturaService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public FacturaService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IFacturaRepository>())
         {
 
         }
 
-
+        /// <summary>
+        /// Crea una factura
+        /// </summary>
+        /// <param name="facturaModel"></param>
         public void CrearFactura(FacturaModel facturaModel)
         {
             try
@@ -57,7 +64,7 @@ namespace BLL.Services
                 Dictionary<string, string> dicBasico = new Dictionary<string, string>();
                 foreach (var item in pedidofactura.DetallePedido.ToList())
                 {
-                    producto += item.Producto.Nombre + "\n";
+                    producto += item.Producto.Tipo + " - " + item.Producto.Nombre + "\n";
                     cantidad += item.Cantidad + "\n";
                     precio += "$ " + item.Producto.PrecioUnidad + "\n";
                     subtotal += "$ " + (item.Cantidad * item.Producto.PrecioUnidad) + "\n";
@@ -86,6 +93,10 @@ namespace BLL.Services
             }
         }
         
+        /// <summary>
+        /// obtiene la ultima factura
+        /// </summary>
+        /// <returns></returns>
         public FacturaModel ObtenerUltimaFactura()
         {
             try
@@ -99,7 +110,52 @@ namespace BLL.Services
                 throw;
             }   
         }
+        private void PdfTicket()
+        {
+            Document document = new Document(PageSize.A4, 50, 50, 25, 25);
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\ticket.pdf", FileMode.Create));
 
+            document.Open();
+
+            // Encabezado
+            Paragraph header = new Paragraph("Reporte Ventas");
+            header.Alignment = Element.ALIGN_CENTER;
+            document.Add(header);
+
+            // Información del cliente
+            Paragraph customerInfo = new Paragraph("Nombre del cliente: Juan Pérez");
+            customerInfo.SpacingBefore = 10f;
+            customerInfo.SpacingAfter = 10f;
+            document.Add(customerInfo);
+
+            // Detalles de la compra
+            PdfPTable table = new PdfPTable(3);
+            table.AddCell("Producto");
+            table.AddCell("Cantidad");
+            table.AddCell("Precio");
+            table.AddCell("Producto 1");
+            table.AddCell("2");
+            table.AddCell("$10.00");
+            table.AddCell("Producto 2");
+            table.AddCell("1");
+            table.AddCell("$5.00");
+            document.Add(table);
+
+            // Total
+            Paragraph total = new Paragraph("Total: $25.00");
+            total.Alignment = Element.ALIGN_RIGHT;
+            total.SpacingBefore = 10f;
+            document.Add(total);
+            document.Close();
+        }
+        /// <summary>
+        /// rellena el pdf
+        /// </summary>
+        /// <param name="templateFile"></param>
+        /// <param name="dicBasico"></param>
+        /// <param name="strFileContent"></param>
+        /// <param name="TipoCopia"></param>
+        /// <returns></returns>
         private byte[] RellenarPdf(string templateFile, Dictionary<string, string> dicBasico, byte[] strFileContent, string TipoCopia = "Original")
         {
 
@@ -135,68 +191,6 @@ namespace BLL.Services
                             pdfFormFields.SetField(CollectionItem.Key, dicBasico[CollectionItem.Key]);
                         }
                     }
-                    //Execute(pdfStamper);
-                    //Rectangle bottomTxt = pdfFormFields.GetFieldPositions("txt_Servicio").LastOrDefault().position;
-
-                    //Rectangle txtLineaRect = pdfFormFields.GetFieldPositions("txt_linea").LastOrDefault().position;
-                    //Rectangle txt2 = pdfFormFields.GetFieldPositions("txt_Total_Sin_Iva").LastOrDefault().position;
-                    //Rectangle txt3 = pdfFormFields.GetFieldPositions("txt_IVA").LastOrDefault().position;
-                    //Rectangle txt4 = pdfFormFields.GetFieldPositions("txt_Total").LastOrDefault().position;
-                    //Rectangle txt5 = pdfFormFields.GetFieldPositions("txt_impNeto").LastOrDefault().position;
-                    //Rectangle txt6 = pdfFormFields.GetFieldPositions("txt_impIva").LastOrDefault().position;
-                    //Rectangle txt7 = pdfFormFields.GetFieldPositions("txt_Imp_Total").LastOrDefault().position;
-
-                    ////txtLineaRect.Bottom = bottomTxt. - 10;
-                    ////txt2.Bottom = txtLineaRect.Bottom - 10;
-                    ////txt3.Bottom = txt2.Bottom - 10;
-                    ////txt4.Bottom = txt3.Bottom - 10;
-                    ////txt5.Bottom = txtLineaRect.Bottom - 10;
-                    ////txt6.Bottom = txt5.Bottom - 10;
-                    ////txt7.Bottom = txt6.Bottom - 10;
-
-                    //pdfFormFields.RemoveField("txt_linea", 1);
-                    //pdfFormFields.RemoveField("txt_Total_Sin_Iva", 1);
-                    //pdfFormFields.RemoveField("txt_IVA", 1);
-                    //pdfFormFields.RemoveField("txt_Total", 1);
-                    //pdfFormFields.RemoveField("txt_impNeto", 1);
-                    //pdfFormFields.RemoveField("txt_impIva", 1);
-                    //pdfFormFields.RemoveField("txt_Imp_Total", 1);
-
-                    //PdfFormField campotxtLinea = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField2 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField3 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField4 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField5 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField6 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                    //PdfFormField txtField7 = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-
-
-                    //campotxtLinea.FieldName = "txt_linea";
-                    //campotxtLinea.ValueAsString = "TOTAL SIN IVA";
-                    //campotxtLinea.SetFieldFlags(PdfFormField.FF_READ_ONLY);
-
-                    //txtField2.FieldName = "txt_Total_Sin_Iva";
-                    //txtField3.FieldName = "txt_IVA";
-                    //txtField4.FieldName = "txt_Total";
-                    //txtField5.FieldName = "txt_impNeto";
-                    //txtField6.FieldName = "txt_impIva";
-                    //txtField7.FieldName = "txt_Imp_Total";
-
-                    //campotxtLinea.SetWidget(txtLineaRect, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField2.SetWidget(txt2, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField3.SetWidget(txt3, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField4.SetWidget(txt4, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField5.SetWidget(txt5, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField6.SetWidget(txt6, PdfAnnotation.HIGHLIGHT_INVERT);
-                    //txtField7.SetWidget(txt7, PdfAnnotation.HIGHLIGHT_INVERT);
-
-                    //pdfStamper.AddAnnotation(campotxtLinea, 1);
-                    //pdfStamper.AddAnnotation(txtField2, 1);
-                    //pdfStamper.AddAnnotation(txtField3, 1);
-                    //pdfStamper.AddAnnotation(txtField4, 1);
-                    //pdfStamper.AddAnnotation(txtField5, 1);
-                    //pdfStamper.AddAnnotation(txtField6, 1);
-                    //pdfStamper.AddAnnotation(txtField7, 1);
 
                     pdfStamper.FormFlattening = false;
                     pdfStamper.Close();
@@ -219,43 +213,6 @@ namespace BLL.Services
             }
 
             return strFileContent;
-        }
-
-        private void Execute(PdfStamper pdfStamper)
-        {
-            AcroFields pdfFormFields = pdfStamper.AcroFields;
-            Rectangle bottomTxt = pdfFormFields.GetFieldPositions("txt_Servicio").LastOrDefault().position;
-            foreach (var nombreCampo in GetLastLine())
-            {
-                Rectangle txtLineaRect = pdfFormFields.GetFieldPositions(nombreCampo.Key).LastOrDefault().position;
-
-                txtLineaRect.Bottom = bottomTxt.Bottom - 10;
-                txtLineaRect.Top = bottomTxt.Top - 10;
-
-                pdfFormFields.RemoveField(nombreCampo.Key, 1);
-                PdfFormField campotxtLinea = PdfFormField.CreateTextField(pdfStamper.Writer, true, false, 0);
-                campotxtLinea.FieldName = nombreCampo.Key;
-                campotxtLinea.ValueAsString = nombreCampo.Value;
-                campotxtLinea.SetFieldFlags(PdfFormField.FF_READ_ONLY);
-                campotxtLinea.SetWidget(txtLineaRect, PdfAnnotation.HIGHLIGHT_INVERT);
-                pdfStamper.AddAnnotation(campotxtLinea, 1);
-            }
-
-        }
-
-        private Dictionary<string,string> GetLastLine()
-        {
-            Dictionary<string, string> newList = new Dictionary<string, string>();
-
-            newList.Add("txt_linea", "-------------------------------------------------------------");
-            newList.Add("txt_Total_Sin_Iva", "Total sin I.V.A.");
-            newList.Add("txt_IVA", "I.V.A.");
-            newList.Add("txt_Total", "Total");
-            newList.Add("txt_impNeto", "");
-            newList.Add("txt_impIva", "");
-            newList.Add("txt_Imp_Total", "");
-
-            return newList;
         }
     }
 }

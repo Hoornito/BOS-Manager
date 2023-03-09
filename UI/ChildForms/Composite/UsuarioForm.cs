@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using UI.Controllers;
+using UI.Tools.LanguageManager;
 
 namespace UI.ChildForms.Composite
 {
@@ -23,6 +24,7 @@ namespace UI.ChildForms.Composite
         public UsuarioForm(IPermisosController permisosController)
         {
             InitializeComponent();
+            TranducirForm.Current.TraducirFormulario(this);
             _permisosController = permisosController;
         }
 
@@ -79,7 +81,7 @@ namespace UI.ChildForms.Composite
             this.treeView1.Nodes.Add(root);
             this.treeView1.ExpandAll();
         }
-        
+
         private void LlenarTreeView(TreeNode padre, ComponenteEntity c)
         {
             TreeNode hijo = new TreeNode(c.Nombre);
@@ -119,7 +121,7 @@ namespace UI.ChildForms.Composite
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            
+
         }
 
         private void btn_AgregarFamilia_Click(object sender, EventArgs e)

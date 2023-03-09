@@ -43,7 +43,7 @@ namespace UI.ChildForms.Composite
         {
             OpenChildForm(new UsuarioForm(_permisosController));
         }
-        
+
         private void OpenChildForm(Form childForm)
         {
             if (currentChildForm != null)

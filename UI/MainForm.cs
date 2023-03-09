@@ -31,6 +31,7 @@ namespace UI
         private readonly IPermisosController _permisosController;
         private readonly IUsuariosController _usuariosController;
         private readonly ILoggerController _loggerController;
+        private readonly IReporteController _reporteController;
         public MainForm(
             IClienteController clienteController,
             IPedidoController pedidoController,
@@ -40,6 +41,7 @@ namespace UI
             IPermisosController permisosController,
             IUsuariosController usuariosController,
             ILoggerController loggerController,
+            IReporteController reporteController,
             UsuarioEntity user)
         {
             _user = user;
@@ -51,6 +53,7 @@ namespace UI
             _permisosController = permisosController;
             _usuariosController = usuariosController;
             _loggerController = loggerController;
+            _reporteController = reporteController;
             InitializeComponent();
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
@@ -119,7 +122,7 @@ namespace UI
             panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
+            
         }
 
         #endregion
@@ -173,6 +176,7 @@ namespace UI
         private void btnReportes_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new ReportesForm(_reporteController));
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -252,13 +256,20 @@ namespace UI
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController);
-            loginForm.Show();
+            Application.Restart();
+            //LoginForm loginForm = new LoginForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController, _reporteController);
+            //loginForm.Show();
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color8);
+            OpenChildForm(new ConfiguracionUsuarioForm(_usuariosController, _user));
         }
     }
 }

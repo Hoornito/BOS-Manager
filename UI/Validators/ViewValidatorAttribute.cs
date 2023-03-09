@@ -10,6 +10,11 @@ namespace UI.Validators
     [Injection(typeof(ViewValidatorAttribute))]
     public sealed class ViewValidatorAttribute : Attribute
     {
+        /// <summary>
+        /// valida los objetos que se le pasan como argumentos
+        /// </summary>
+        /// <param name="objs"></param>
+        /// <exception cref="Exception"></exception>
         [Advice(Kind.Before)] //After, Around
         public void Validate([Argument(Source.Arguments)] object[] objs)
         {

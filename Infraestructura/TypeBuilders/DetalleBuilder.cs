@@ -7,6 +7,10 @@ namespace Infraestructura.TypeBuilders
 {
     public class DetalleBuilder : IEntityTypeConfiguration<DetalleModel>
     {
+        /// <summary>
+        /// Configuracion de la tabla DetallePedido
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<DetalleModel> builder)
         {
             builder.HasKey(p => p.Id_Detalle);
@@ -20,6 +24,9 @@ namespace Infraestructura.TypeBuilders
                 .HasForeignKey(p => p.Id_Producto);
 
             builder.Property(p => p.Cantidad)
+                .IsRequired(true);
+
+            builder.Property(p => p.Tipo)
                 .IsRequired(true);
 
             builder.ToTable("DetallePedido");

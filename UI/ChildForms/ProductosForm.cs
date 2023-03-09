@@ -48,6 +48,7 @@ namespace UI.ChildForms
                     Nombre = x.Nombre,
                     Precio = x.PrecioUnidad,
                     Cantidad = x.Cantidad,
+                    Tipo = x.Tipo,
                     Descripción = x.Descripción,
                     Estado = x.Active
                 });
@@ -61,7 +62,7 @@ namespace UI.ChildForms
             producto.PrecioUnidad = Convert.ToDecimal(txtPrecio.Text);
             producto.Cantidad = Convert.ToInt32(txtCantidad.Text);
             producto.Descripción = txtDescripción.Text;
-
+            producto.Tipo = cboTipo.Text;
             return producto;
         }
         #endregion
@@ -82,10 +83,10 @@ namespace UI.ChildForms
 
                 LlenarGrilla();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al cargar el producto, contactesé con un administrador.");
             }
         }
 
@@ -105,10 +106,10 @@ namespace UI.ChildForms
 
                 LlenarGrilla();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al eliminar el producto, contactesé con un administrador.");
             }
         }
 
@@ -128,10 +129,10 @@ namespace UI.ChildForms
 
                 LlenarGrilla();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al actualizar el producto, contactesé con un administrador.");
             }
         }
 
@@ -144,7 +145,7 @@ namespace UI.ChildForms
             txtCantidad.Text = producto.Cantidad.ToString();
             txtPrecio.Text = producto.PrecioUnidad.ToString();
             txtDescripción.Text = producto.Descripción;
-            
+
         }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)

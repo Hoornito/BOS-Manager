@@ -16,6 +16,10 @@ namespace SL.Services
         private static readonly ILog logtest = LogManager.GetLogger("LoggerManager");
         private static readonly ILog logPerformance = LogManager.GetLogger("performance");
 
+        /// <summary>
+        /// Genera un registro de log de un error ocurrido en la aplicación.
+        /// </summary>
+        /// <param name="ex">La excepción que se desea registrar.</param>
         public static void GenerateLog(Exception ex)
         {
             try
@@ -28,16 +32,28 @@ namespace SL.Services
             }
         }
 
+        /// <summary>
+        /// Registra un mensaje de información en el registro de log de la aplicación.
+        /// </summary>
+        /// <param name="message">El mensaje que se desea registrar.</param>
         public static void Info(string message)
         {
             log.Info(message);
         }
 
+        /// <summary>
+        /// Registra un mensaje de error en el registro de log de la aplicación.
+        /// </summary>
+        /// <param name="message">El mensaje que se desea registrar.</param>
         public static void Error(string message)
         {
             log.Error(message);
         }
 
+        /// <summary>
+        /// Registra un mensaje de advertencia en el registro de log de la aplicación.
+        /// </summary>
+        /// <param name="message">El mensaje que se desea registrar.</param>
         public static void Warn(string message)
         {
             log.Warn(message);

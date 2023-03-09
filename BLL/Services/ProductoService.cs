@@ -12,12 +12,20 @@ namespace BLL.Services
 {
     public class ProductoService : GenericService<ProductoModel>, IProductoService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public ProductoService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IProductoRepository>())
         {
 
         }
 
+        /// <summary>
+        /// Agrega un producto
+        /// </summary>
+        /// <param name="productoModel"></param>
         public void AgregarProducto(ProductoModel productoModel)
         {
             try
@@ -45,6 +53,10 @@ namespace BLL.Services
             
         }
 
+        /// <summary>
+        /// Actualiza el producto
+        /// </summary>
+        /// <param name="productoModel"></param>
         public void ActualizarProducto(ProductoModel productoModel)
         {
             Actualizar(productoModel);
@@ -52,6 +64,10 @@ namespace BLL.Services
             _unitOfWork.Save();
         }
 
+        /// <summary>
+        /// Elimina el producto
+        /// </summary>
+        /// <param name="productoModel"></param>
         public void EliminarProducto(ProductoModel productoModel)
         {
             Eliminar(productoModel);

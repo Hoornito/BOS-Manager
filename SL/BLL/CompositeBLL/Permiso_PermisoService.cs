@@ -13,12 +13,20 @@ namespace SL.BLL.CompositeBLL
 {
     public class Permiso_PermisoService : GenericService<Permiso_PermisoModel>, IPermiso_PermisoService
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public Permiso_PermisoService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IPermiso_PermisoRepository>())
         {
 
         }
-        
+        /// <summary>
+        /// Guarda la familia
+        /// </summary>
+        /// <param name="permiso"></param>
+        /// <param name="familia"></param>
         public void GuardarFamilia(Permiso_PermisoModel permiso, List<Permiso_PermisoModel> familia)
         {
             try

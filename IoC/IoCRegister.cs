@@ -7,6 +7,12 @@ namespace IoC
 {
     public static class IoCRegister
     {
+        /// <summary>
+        /// Configura el IoC
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         public static IServiceCollection ConfigureIoC(this IServiceCollection services, IConfiguration configuration)
         {
             services.RegisterControllers();

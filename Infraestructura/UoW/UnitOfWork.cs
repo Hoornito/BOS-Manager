@@ -11,18 +11,28 @@ namespace Infraestructura.UoW
     public class UnitOfWork : UnitOfWorkBase, IUnitOfWork
     {
         private List<Type> _repositories;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="context"></param>
         public UnitOfWork(AppDBContext context) : base(context)
         {
             InitializeRepositories();
         }
-
+        /// <summary>
+        /// Obtiene el repositorio
+        /// </summary>
+        /// <typeparam name="I"></typeparam>
+        /// <returns></returns>
         public I GetRepository<I>()
         {
             var repository = _repositories.FirstOrDefault(t => typeof(I).IsAssignableFrom(t));
             return (I)Activator.CreateInstance(repository, Context);
         }
 
+        /// <summary>
+        /// Inicializa los repositorios
+        /// </summary>
         private void InitializeRepositories()
         {
             _repositories = new List<Type>();

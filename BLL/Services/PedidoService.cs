@@ -14,12 +14,20 @@ namespace BLL.Services
 {
     public class PedidoService : GenericService<PedidoModel>, IPedidoService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public PedidoService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IPedidoRepository>())
         {
 
         }
 
+        /// <summary>
+        /// Actualiza el pedido
+        /// </summary>
+        /// <param name="pedidoModel"></param>
         public void ActualizarPedido(PedidoModel pedidoModel)
         {
             try
@@ -54,6 +62,10 @@ namespace BLL.Services
             
         }
 
+        /// <summary>
+        /// crea un pedido en estado nuevo
+        /// </summary>
+        /// <param name="pedidoModel"></param>
         public void CrearPedido(PedidoModel pedidoModel)
         {
             try

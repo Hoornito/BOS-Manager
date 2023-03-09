@@ -28,6 +28,10 @@ namespace UI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// obtiene una lista de productos
+        /// </summary>
+        /// <returns></returns>
         public List<ProductoEntity> GetAll()
         {
             //obtengo una lista de todos los productos
@@ -38,6 +42,11 @@ namespace UI.Controllers
             return listaProducto;
         }
 
+        /// <summary>
+        /// obtiene un producto por nombre
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <returns></returns>
         public ProductoEntity GetProducto(string Nombre)
         {
             //obtengo el producto por su nombre
@@ -45,7 +54,10 @@ namespace UI.Controllers
             return producto;
         }
         
-
+        /// <summary>
+        /// guarda los cambios
+        /// </summary>
+        /// <param name="productoEntity"></param>
         [ViewValidator]
         public void GuardarCambios(ProductoEntity productoEntity)
         {

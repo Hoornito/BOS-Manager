@@ -20,6 +20,7 @@ namespace SL.Domain.Models
         public string? email { get; set; }
         public string? telefono { get; set; }
         public string? dni { get; set; }
+        public string? idioma { get; set; }
         public ICollection<Usuario_PermisoModel> Usuario_Permisos { get; set; }
     }
 }

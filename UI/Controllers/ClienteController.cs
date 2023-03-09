@@ -28,6 +28,10 @@ namespace UI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// recupera una lista de todos los clientes desde una capa de servicio, convierte los modelos de clientes resultantes en entidades de clientes utilizando AutoMapper y devuelve la lista de entidades de clientes.
+        /// </summary>
+        /// <returns></returns>
         public List<ClienteEntity> GetAll()
         {
             var listaClienteModel = _clienteService.GetAll().ToList();
@@ -37,7 +41,11 @@ namespace UI.Controllers
             return listaCliente;
         }
 
-
+        /// <summary>
+        /// recupera un cliente por número de teléfono desde una capa de servicio, convierte el modelo de cliente resultante en una entidad de cliente utilizando AutoMapper y devuelve la entidad de cliente.
+        /// </summary>
+        /// <param name="telefono"></param>
+        /// <returns></returns>
         public ClienteEntity GetCliente(string telefono)
         {
             //obtengo el cliente por numero de telefono
@@ -45,7 +53,10 @@ namespace UI.Controllers
             return cliente;
         }
 
-
+        /// <summary>
+        /// está decorado con un atributo personalizado "ViewValidator", que presumiblemente valida los parámetros de entrada antes de ejecutar el método. Este método toma una entidad de cliente como entrada y realiza una operación de creación, actualización o eliminación según el estado de la entidad de cliente. El método también registra las operaciones realizadas en un archivo de registro y establece el estado de la entidad de cliente en "Unchanged" al final de la operación.
+        /// </summary>
+        /// <param name="clienteEntity"></param>
         [ViewValidator]
         public void GuardarCambios(ClienteEntity clienteEntity)
         {

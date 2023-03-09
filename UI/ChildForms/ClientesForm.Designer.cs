@@ -29,311 +29,315 @@ namespace UI.ChildForms
         /// </summary>
         private void InitializeComponent()
         {
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.txtDNI = new System.Windows.Forms.TextBox();
-            this.txtmail = new System.Windows.Forms.TextBox();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.AgregarCliente = new FontAwesome.Sharp.IconButton();
-            this.EliminarCliente = new FontAwesome.Sharp.IconButton();
-            this.ActualizarCliente = new FontAwesome.Sharp.IconButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconButton3 = new FontAwesome.Sharp.IconButton();
+            iconButton4 = new FontAwesome.Sharp.IconButton();
+            iconButton5 = new FontAwesome.Sharp.IconButton();
+            iconButton6 = new FontAwesome.Sharp.IconButton();
+            txtNombre = new System.Windows.Forms.TextBox();
+            txtTelefono = new System.Windows.Forms.TextBox();
+            txtDNI = new System.Windows.Forms.TextBox();
+            txtmail = new System.Windows.Forms.TextBox();
+            txtDireccion = new System.Windows.Forms.TextBox();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            label1 = new System.Windows.Forms.Label();
+            AgregarCliente = new FontAwesome.Sharp.IconButton();
+            EliminarCliente = new FontAwesome.Sharp.IconButton();
+            ActualizarCliente = new FontAwesome.Sharp.IconButton();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // iconButton1
             // 
-            this.iconButton1.Enabled = false;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton1.IconSize = 24;
-            this.iconButton1.Location = new System.Drawing.Point(206, 91);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(27, 23);
-            this.iconButton1.TabIndex = 11;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            iconButton1.Enabled = false;
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
+            iconButton1.IconColor = System.Drawing.Color.White;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton1.IconSize = 24;
+            iconButton1.Location = new System.Drawing.Point(206, 91);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new System.Drawing.Size(27, 23);
+            iconButton1.TabIndex = 11;
+            iconButton1.UseVisualStyleBackColor = true;
             // 
             // iconButton3
             // 
-            this.iconButton3.Enabled = false;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            this.iconButton3.IconColor = System.Drawing.Color.White;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton3.IconSize = 24;
-            this.iconButton3.Location = new System.Drawing.Point(206, 120);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(27, 23);
-            this.iconButton3.TabIndex = 15;
-            this.iconButton3.UseVisualStyleBackColor = true;
+            iconButton3.Enabled = false;
+            iconButton3.FlatAppearance.BorderSize = 0;
+            iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            iconButton3.IconColor = System.Drawing.Color.White;
+            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton3.IconSize = 24;
+            iconButton3.Location = new System.Drawing.Point(206, 120);
+            iconButton3.Name = "iconButton3";
+            iconButton3.Size = new System.Drawing.Size(27, 23);
+            iconButton3.TabIndex = 15;
+            iconButton3.UseVisualStyleBackColor = true;
             // 
             // iconButton4
             // 
-            this.iconButton4.Enabled = false;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Phone;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton4.IconSize = 24;
-            this.iconButton4.Location = new System.Drawing.Point(206, 149);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(27, 23);
-            this.iconButton4.TabIndex = 17;
-            this.iconButton4.UseVisualStyleBackColor = true;
+            iconButton4.Enabled = false;
+            iconButton4.FlatAppearance.BorderSize = 0;
+            iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton4.IconChar = FontAwesome.Sharp.IconChar.Phone;
+            iconButton4.IconColor = System.Drawing.Color.White;
+            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton4.IconSize = 24;
+            iconButton4.Location = new System.Drawing.Point(206, 149);
+            iconButton4.Name = "iconButton4";
+            iconButton4.Size = new System.Drawing.Size(27, 23);
+            iconButton4.TabIndex = 17;
+            iconButton4.UseVisualStyleBackColor = true;
             // 
             // iconButton5
             // 
-            this.iconButton5.Enabled = false;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.HouseUser;
-            this.iconButton5.IconColor = System.Drawing.Color.White;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton5.IconSize = 24;
-            this.iconButton5.Location = new System.Drawing.Point(206, 178);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(27, 23);
-            this.iconButton5.TabIndex = 19;
-            this.iconButton5.UseVisualStyleBackColor = true;
+            iconButton5.Enabled = false;
+            iconButton5.FlatAppearance.BorderSize = 0;
+            iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton5.IconChar = FontAwesome.Sharp.IconChar.HouseUser;
+            iconButton5.IconColor = System.Drawing.Color.White;
+            iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton5.IconSize = 24;
+            iconButton5.Location = new System.Drawing.Point(206, 178);
+            iconButton5.Name = "iconButton5";
+            iconButton5.Size = new System.Drawing.Size(27, 23);
+            iconButton5.TabIndex = 19;
+            iconButton5.UseVisualStyleBackColor = true;
             // 
             // iconButton6
             // 
-            this.iconButton6.Enabled = false;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Envelope;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton6.IconSize = 24;
-            this.iconButton6.Location = new System.Drawing.Point(206, 207);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(27, 23);
-            this.iconButton6.TabIndex = 21;
-            this.iconButton6.UseVisualStyleBackColor = true;
+            iconButton6.Enabled = false;
+            iconButton6.FlatAppearance.BorderSize = 0;
+            iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton6.IconChar = FontAwesome.Sharp.IconChar.Envelope;
+            iconButton6.IconColor = System.Drawing.Color.White;
+            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton6.IconSize = 24;
+            iconButton6.Location = new System.Drawing.Point(206, 207);
+            iconButton6.Name = "iconButton6";
+            iconButton6.Size = new System.Drawing.Size(27, 23);
+            iconButton6.TabIndex = 21;
+            iconButton6.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(100, 91);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 23);
-            this.txtNombre.TabIndex = 22;
+            txtNombre.Location = new System.Drawing.Point(100, 91);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new System.Drawing.Size(100, 23);
+            txtNombre.TabIndex = 22;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(100, 149);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 23);
-            this.txtTelefono.TabIndex = 25;
-            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
+            txtTelefono.Location = new System.Drawing.Point(100, 149);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new System.Drawing.Size(100, 23);
+            txtTelefono.TabIndex = 25;
+            txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
             // txtDNI
             // 
-            this.txtDNI.Location = new System.Drawing.Point(100, 120);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(100, 23);
-            this.txtDNI.TabIndex = 24;
-            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
+            txtDNI.Location = new System.Drawing.Point(100, 120);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new System.Drawing.Size(100, 23);
+            txtDNI.TabIndex = 24;
+            txtDNI.KeyPress += txtDNI_KeyPress;
             // 
             // txtmail
             // 
-            this.txtmail.Location = new System.Drawing.Point(100, 207);
-            this.txtmail.Name = "txtmail";
-            this.txtmail.Size = new System.Drawing.Size(100, 23);
-            this.txtmail.TabIndex = 27;
+            txtmail.Location = new System.Drawing.Point(100, 207);
+            txtmail.Name = "txtmail";
+            txtmail.Size = new System.Drawing.Size(100, 23);
+            txtmail.TabIndex = 27;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(100, 178);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(100, 23);
-            this.txtDireccion.TabIndex = 26;
+            txtDireccion.Location = new System.Drawing.Point(100, 178);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new System.Drawing.Size(100, 23);
+            txtDireccion.TabIndex = 26;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(267, 91);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(645, 341);
-            this.dataGridView1.TabIndex = 28;
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(129, 136, 205);
+            dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(267, 91);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            dataGridView1.Size = new System.Drawing.Size(645, 341);
+            dataGridView1.TabIndex = 28;
+            dataGridView1.RowHeaderMouseClick += dataGridView1_RowHeaderMouseClick;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 32F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(342, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(354, 51);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Módulo Clientes";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Arial", 32F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            label1.Location = new System.Drawing.Point(342, 17);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(354, 51);
+            label1.TabIndex = 29;
+            label1.Text = "Módulo Clientes";
             // 
             // AgregarCliente
             // 
-            this.AgregarCliente.FlatAppearance.BorderSize = 0;
-            this.AgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AgregarCliente.ForeColor = System.Drawing.Color.White;
-            this.AgregarCliente.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.AgregarCliente.IconColor = System.Drawing.Color.White;
-            this.AgregarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.AgregarCliente.IconSize = 30;
-            this.AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AgregarCliente.Location = new System.Drawing.Point(100, 236);
-            this.AgregarCliente.Name = "AgregarCliente";
-            this.AgregarCliente.Size = new System.Drawing.Size(100, 48);
-            this.AgregarCliente.TabIndex = 30;
-            this.AgregarCliente.Text = "Agregar";
-            this.AgregarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.AgregarCliente.UseVisualStyleBackColor = true;
-            this.AgregarCliente.Click += new System.EventHandler(this.AgregarCliente_Click);
+            AgregarCliente.FlatAppearance.BorderSize = 0;
+            AgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            AgregarCliente.ForeColor = System.Drawing.Color.White;
+            AgregarCliente.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            AgregarCliente.IconColor = System.Drawing.Color.White;
+            AgregarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            AgregarCliente.IconSize = 30;
+            AgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            AgregarCliente.Location = new System.Drawing.Point(100, 236);
+            AgregarCliente.Name = "AgregarCliente";
+            AgregarCliente.Size = new System.Drawing.Size(100, 48);
+            AgregarCliente.TabIndex = 30;
+            AgregarCliente.Text = "Agregar";
+            AgregarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            AgregarCliente.UseVisualStyleBackColor = true;
+            AgregarCliente.Click += AgregarCliente_Click;
             // 
             // EliminarCliente
             // 
-            this.EliminarCliente.FlatAppearance.BorderSize = 0;
-            this.EliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EliminarCliente.ForeColor = System.Drawing.Color.White;
-            this.EliminarCliente.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.EliminarCliente.IconColor = System.Drawing.Color.White;
-            this.EliminarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.EliminarCliente.IconSize = 30;
-            this.EliminarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.EliminarCliente.Location = new System.Drawing.Point(100, 344);
-            this.EliminarCliente.Name = "EliminarCliente";
-            this.EliminarCliente.Size = new System.Drawing.Size(100, 48);
-            this.EliminarCliente.TabIndex = 35;
-            this.EliminarCliente.Text = "Eliminar";
-            this.EliminarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.EliminarCliente.UseVisualStyleBackColor = true;
-            this.EliminarCliente.Click += new System.EventHandler(this.EliminarCliente_Click);
+            EliminarCliente.FlatAppearance.BorderSize = 0;
+            EliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            EliminarCliente.ForeColor = System.Drawing.Color.White;
+            EliminarCliente.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            EliminarCliente.IconColor = System.Drawing.Color.White;
+            EliminarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            EliminarCliente.IconSize = 30;
+            EliminarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            EliminarCliente.Location = new System.Drawing.Point(100, 344);
+            EliminarCliente.Name = "EliminarCliente";
+            EliminarCliente.Size = new System.Drawing.Size(100, 48);
+            EliminarCliente.TabIndex = 35;
+            EliminarCliente.Text = "Eliminar";
+            EliminarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            EliminarCliente.UseVisualStyleBackColor = true;
+            EliminarCliente.Click += EliminarCliente_Click;
             // 
             // ActualizarCliente
             // 
-            this.ActualizarCliente.FlatAppearance.BorderSize = 0;
-            this.ActualizarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActualizarCliente.ForeColor = System.Drawing.Color.White;
-            this.ActualizarCliente.IconChar = FontAwesome.Sharp.IconChar.Redo;
-            this.ActualizarCliente.IconColor = System.Drawing.Color.White;
-            this.ActualizarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ActualizarCliente.IconSize = 30;
-            this.ActualizarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ActualizarCliente.Location = new System.Drawing.Point(100, 290);
-            this.ActualizarCliente.Name = "ActualizarCliente";
-            this.ActualizarCliente.Size = new System.Drawing.Size(100, 48);
-            this.ActualizarCliente.TabIndex = 34;
-            this.ActualizarCliente.Text = "Actualizar";
-            this.ActualizarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ActualizarCliente.UseVisualStyleBackColor = true;
-            this.ActualizarCliente.Click += new System.EventHandler(this.ActualizarCliente_Click);
+            ActualizarCliente.FlatAppearance.BorderSize = 0;
+            ActualizarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            ActualizarCliente.ForeColor = System.Drawing.Color.White;
+            ActualizarCliente.IconChar = FontAwesome.Sharp.IconChar.Redo;
+            ActualizarCliente.IconColor = System.Drawing.Color.White;
+            ActualizarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ActualizarCliente.IconSize = 30;
+            ActualizarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            ActualizarCliente.Location = new System.Drawing.Point(100, 290);
+            ActualizarCliente.Name = "ActualizarCliente";
+            ActualizarCliente.Size = new System.Drawing.Size(100, 48);
+            ActualizarCliente.TabIndex = 34;
+            ActualizarCliente.Text = "Actualizar";
+            ActualizarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ActualizarCliente.UseVisualStyleBackColor = true;
+            ActualizarCliente.Click += ActualizarCliente_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(34, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 15);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "Nombre";
+            label2.AutoSize = true;
+            label2.ForeColor = System.Drawing.Color.White;
+            label2.Location = new System.Drawing.Point(34, 95);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(51, 15);
+            label2.TabIndex = 36;
+            label2.Text = "Nombre";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(34, 152);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "Teléfono";
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.Color.White;
+            label3.Location = new System.Drawing.Point(33, 152);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(52, 15);
+            label3.TabIndex = 37;
+            label3.Text = "Teléfono";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(34, 181);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 38;
-            this.label4.Text = "Dirección";
+            label4.AutoSize = true;
+            label4.ForeColor = System.Drawing.Color.White;
+            label4.Location = new System.Drawing.Point(28, 181);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(57, 15);
+            label4.TabIndex = 38;
+            label4.Text = "Dirección";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(34, 211);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 15);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "Mail";
+            label5.AutoSize = true;
+            label5.ForeColor = System.Drawing.Color.White;
+            label5.Location = new System.Drawing.Point(55, 211);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(30, 15);
+            label5.TabIndex = 39;
+            label5.Text = "Mail";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(34, 124);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 15);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "DNI";
+            label6.AutoSize = true;
+            label6.ForeColor = System.Drawing.Color.White;
+            label6.Location = new System.Drawing.Point(58, 124);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(27, 15);
+            label6.TabIndex = 40;
+            label6.Text = "DNI";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ClientesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
-            this.ClientSize = new System.Drawing.Size(984, 486);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.EliminarCliente);
-            this.Controls.Add(this.ActualizarCliente);
-            this.Controls.Add(this.AgregarCliente);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtmail);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.txtTelefono);
-            this.Controls.Add(this.txtDNI);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.iconButton6);
-            this.Controls.Add(this.iconButton5);
-            this.Controls.Add(this.iconButton4);
-            this.Controls.Add(this.iconButton3);
-            this.Controls.Add(this.iconButton1);
-            this.MinimumSize = new System.Drawing.Size(1000, 525);
-            this.Name = "ClientesForm";
-            this.Text = "ClientesForm";
-            this.Load += new System.EventHandler(this.ClientesForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(129, 136, 205);
+            ClientSize = new System.Drawing.Size(984, 486);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(EliminarCliente);
+            Controls.Add(ActualizarCliente);
+            Controls.Add(AgregarCliente);
+            Controls.Add(label1);
+            Controls.Add(dataGridView1);
+            Controls.Add(txtmail);
+            Controls.Add(txtDireccion);
+            Controls.Add(txtTelefono);
+            Controls.Add(txtDNI);
+            Controls.Add(txtNombre);
+            Controls.Add(iconButton6);
+            Controls.Add(iconButton5);
+            Controls.Add(iconButton4);
+            Controls.Add(iconButton3);
+            Controls.Add(iconButton1);
+            MinimumSize = new System.Drawing.Size(1000, 525);
+            Name = "ClientesForm";
+            Text = "Clientes";
+            Load += ClientesForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

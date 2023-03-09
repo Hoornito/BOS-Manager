@@ -33,5 +33,9 @@ namespace SL.BLL
             return DALLangugage.Current.Traducir(clave);
         }
 
+        public void SeleccionarIdioma(string idioma)
+        {
+            DALLangugage.Current.SetCodigoCultura(idioma);
+        }
     }
 }

@@ -9,6 +9,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 using SL.Services;
+using SL.Settings;
 
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,10 @@ namespace UI.Controllers
             _facturaService = facturaService;
         }
 
+        /// <summary>
+        /// guarda los cambios
+        /// </summary>
+        /// <param name="facturaEntity"></param>
         [ViewValidator]
         public void GuardarCambios(FacturaEntity facturaEntity)
         {
@@ -44,6 +49,7 @@ namespace UI.Controllers
                 switch (facturaEntity.State)
                 {
                     case EntityState.Added:
+                        facturaDTO.IVA = decimal.Parse(ApplicationSettings.IVA);
                         _facturaService.CrearFactura(facturaDTO);
                         var nroFactura = _facturaService.ObtenerUltimaFactura().Id_Factura;
                         LoggerManager.Info($"Factura #{nroFactura} generada correctamente.");

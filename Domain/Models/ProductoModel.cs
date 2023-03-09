@@ -16,6 +16,7 @@ namespace Domain.Models
         public string Nombre { get; set; }
         public decimal PrecioUnidad { get; set; }
         public int Cantidad { get; set; }
+        public string Tipo { get; set; }
         public bool Active { get; set; }
         public virtual ICollection<DetalleModel> DetallePedido { get; set; }
     }

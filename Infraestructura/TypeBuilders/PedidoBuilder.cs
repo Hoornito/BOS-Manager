@@ -7,6 +7,10 @@ namespace Infraestructura.TypeBuilders
 {
     public class PedidoBuilder : IEntityTypeConfiguration<PedidoModel>
     {
+        /// <summary>
+        /// Configuracion de la tabla Pedido
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<PedidoModel> builder)
         {
             builder.HasKey(p => p.Id_Pedido);

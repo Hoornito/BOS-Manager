@@ -12,12 +12,20 @@ namespace BLL.Services
 {
     public class DetalleService : GenericService<DetalleModel>, IDetalleService
     {
+        /// <summary>
+        /// Constructor de DetalleService
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public DetalleService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IDetalleRepository>())
         {
 
         }
 
+        /// <summary>
+        /// Agrega un producto al detalle, actualiza el stock del producto y guarda los cambios en la base de datos
+        /// </summary>
+        /// <param name="detalleModel"></param>
         public void AgergarADetalle(DetalleModel detalleModel)
         {
             try
@@ -52,6 +60,10 @@ namespace BLL.Services
             }
         }
 
+        /// <summary>
+        /// Actualiza el detalle del producto y guarda los cambios en la base de datos
+        /// </summary>
+        /// <param name="detalleModel"></param>
         public void ActualizarDetalle(DetalleModel detalleModel)
         {
             Actualizar(detalleModel);
@@ -60,6 +72,10 @@ namespace BLL.Services
             
         }
 
+        /// <summary>
+        /// Elimina un producto del detalle, actualiza el stock del producto y guarda los cambios en la base de datos
+        /// </summary>
+        /// <param name="detalleModel"></param>
         public void EliminarDeDetalle(DetalleModel detalleModel)
         {
 

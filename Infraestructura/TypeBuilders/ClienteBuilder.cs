@@ -7,6 +7,10 @@ namespace Infraestructura.TypeBuilders
 {
     public class ClienteBuilder : IEntityTypeConfiguration<ClienteModel>
     {
+        /// <summary>
+        /// Configuracion de la tabla Cliente
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<ClienteModel> builder)
         {
             builder.HasKey(p => p.Id_Cliente);

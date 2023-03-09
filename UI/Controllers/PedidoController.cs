@@ -32,6 +32,10 @@ namespace UI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// guarda los cambios del pedido
+        /// </summary>
+        /// <param name="pedidoEntity"></param>
         [ViewValidator]
         public void GuardarCambios(PedidoEntity pedidoEntity)
         {
@@ -106,6 +110,10 @@ namespace UI.Controllers
             }
         }
 
+        /// <summary>
+        /// Este método obtiene una lista de todos los pedidos que están actualmente "En preparación". Utiliza el servicio de pedidos para recuperar los datos y luego mapea los modelos de pedidos a las entidades de pedidos correspondientes antes de devolver la lista.
+        /// </summary>
+        /// <returns></returns>
         public List<PedidoEntity> ObtenerPedidos()
         {
             var listaPedidoModel = _pedidoService.Get(x => x.Estado == "En preparación").ToList();
@@ -114,6 +122,10 @@ namespace UI.Controllers
 
             return listaPedido;
         }
+        /// <summary>
+        /// Este método obtiene una lista de todos los pedidos que han sido "Finalizados" y, por lo tanto, están listos para ser facturados. Utiliza el servicio de pedidos para recuperar los datos y luego mapea los modelos de pedidos a las entidades de pedidos correspondientes antes de devolver la lista.
+        /// </summary>
+        /// <returns></returns>
         public List<PedidoEntity> ObtenerPedidosParaFacturar()
         {
             var listaPedidoModel = _pedidoService.Get(x => x.Estado == "Finalizado").ToList();
@@ -123,6 +135,10 @@ namespace UI.Controllers
             return listaPedido;
         }
 
+        /// <summary>
+        ///  Este método obtiene el último pedido que se ha creado en el sistema. Utiliza el servicio de pedidos para recuperar todos los pedidos, los ordena por fecha de creación y luego mapea el modelo de pedido correspondiente a una entidad de pedido antes de devolverlo.
+        /// </summary>
+        /// <returns></returns>
         public PedidoEntity ObtenerUltimoPedido()
         {
             if (_pedidoService.Get().FirstOrDefault() == null)
@@ -137,7 +153,11 @@ namespace UI.Controllers
             }
             
         }
-
+        /// <summary>
+        /// Este método obtiene un pedido específico según el ID proporcionado. Utiliza el servicio de pedidos para recuperar el pedido correspondiente y mapea el modelo de pedido a una entidad de pedido antes de devolverlo. También incluye datos del cliente asociado con el pedido a través de la propiedad de navegación "Cliente".
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public PedidoEntity ObtenerPedido(int id)
         {
             var pedido = _mapper.Map<PedidoEntity>(_pedidoService.Get(x => x.Id_Pedido == id, includeProperties: "Cliente").FirstOrDefault());

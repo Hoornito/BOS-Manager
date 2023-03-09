@@ -32,6 +32,12 @@ namespace UI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Guarda el componente
+        /// </summary>
+        /// <param name="componente"></param>
+        /// <param name="esfamilia"></param>
+        /// <returns></returns>
         public ComponenteEntity GuardarComponente(ComponenteEntity componente, bool esfamilia)
         {
             PermisoModel permiso = new PermisoModel();
@@ -48,6 +54,11 @@ namespace UI.Controllers
             return componente;
         }
 
+        /// <summary>
+        /// guarda la familia
+        /// </summary>
+        /// <param name="familia"></param>
+        /// <exception cref="Exception"></exception>
         public void GuardarFamilia(FamiliaEntity familia)
         {
             List<Permiso_PermisoModel> listaPermisos = new List<Permiso_PermisoModel>();
@@ -70,6 +81,10 @@ namespace UI.Controllers
                 
         }
 
+        /// <summary>
+        /// obtiene todas las patentes
+        /// </summary>
+        /// <returns></returns>
         public IList<PatenteEntity> GetAllPatentes()
         {
             var permisosModel = _permisosService.Get(tracking : false).ToList();
@@ -79,6 +94,10 @@ namespace UI.Controllers
             return permisoEntity.Where(x => x.Permiso != null).ToList();
         }
 
+        /// <summary>
+        /// obtiene todas las familias
+        /// </summary>
+        /// <returns></returns>
         public IList<FamiliaEntity> GetAllFamilias()
         {
             var permisosModel = _permisosService.Get().ToList();
@@ -125,7 +144,11 @@ namespace UI.Controllers
             return familiasEntity;
         }
         
-
+        /// <summary>
+        /// guarda la patente
+        /// </summary>
+        /// <param name="patente"></param>
+        /// <param name="permiso"></param>
         public void GuardarPatente(string patente, string permiso)
         {
             PatenteEntity patenteEntity = new PatenteEntity()
@@ -139,10 +162,26 @@ namespace UI.Controllers
             LoggerManager.Info($"Permiso: {patente} creado correctamente.");
         }
         
+        /// <summary>
+        /// Valida que no exista el permiso
+        /// </summary>
+        /// <param name="permisos"></param>
+        /// <param name="tipoPermiso"></param>
+        /// <returns></returns>
         public bool ValidarExistencia(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso) => _permisosService.BuscarPermiso(permisos, tipoPermiso);
 
+        /// <summary>
+        /// valida la familia
+        /// </summary>
+        /// <param name="familiaActual"></param>
+        /// <param name="familiaAgregar"></param>
+        /// <returns></returns>
         public bool ValidarFamilias(FamiliaEntity familiaActual, FamiliaEntity familiaAgregar) => _permisosService.ValidarPermisosRepetidos(familiaActual, familiaAgregar);
 
+        /// <summary>
+        /// obtiene los usuarios
+        /// </summary>
+        /// <returns></returns>
         public IList<UsuarioEntity> ObtenerUsuarios() /*=> _mapper.Map<List<Usuario>>(_usuarioService.Get().ToList());*/
         {
             var UsuariosCompletosDto = _usuariosService.Get().ToList();
@@ -150,7 +189,10 @@ namespace UI.Controllers
             listaUsuarios.AddRange(_mapper.Map<List<UsuarioEntity>>(UsuariosCompletosDto));
             return listaUsuarios;
         }
-
+        /// <summary>
+        /// obtiene todos los usuarios completos
+        /// </summary>
+        /// <returns></returns>
         public List<UsuarioEntity> GetAllUsuariosCompletos()
         {
             var Familias = GetAllFamilias();
@@ -160,7 +202,11 @@ namespace UI.Controllers
 
             return Usuarioscompletos;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Usuarios"></param>
+        /// <returns></returns>
         private List<UsuarioEntity> UsuariosConPermisos(List<UsuarioEntity> Usuarios)
         {
             var UsuariosPermisos = _usuario_permisoService.Get(includeProperties: "PermisoModel").ToList();
@@ -177,7 +223,12 @@ namespace UI.Controllers
             });
             return Usuarios;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usuarios"></param>
+        /// <param name="familias"></param>
+        /// <returns></returns>
         private List<UsuarioEntity> UsuariosCompletos(List<UsuarioEntity> usuarios, List<FamiliaEntity> familias)
         {
             var PermisosDto = _usuario_permisoService.Get().ToList();
@@ -198,6 +249,10 @@ namespace UI.Controllers
             return usuarios;
         }
         
+        /// <summary>
+        /// guarda los permisos
+        /// </summary>
+        /// <param name="u"></param>
         public void GuardarPermisos(UsuarioEntity u)
         {
             try
@@ -220,12 +275,20 @@ namespace UI.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// obtiene el usuario
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public UsuarioEntity GetUsuario(string nombre)
         {
             return GetUsuarioCompleto(nombre);
         }
-
+        /// <summary>
+        /// obtiene el usuario completo
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public UsuarioEntity GetUsuarioCompleto(string nombre)
         {
             var usuarioDto = _usuariosService.Get(x => x.usuario == nombre, tracking: false).FirstOrDefault();
@@ -236,7 +299,11 @@ namespace UI.Controllers
             usuario = UsuariosCompletos(usuarioConPermisos, familias.ToList()).FirstOrDefault();
             return usuario;
         }
-        
+        /// <summary>
+        /// obtiene los permisos de usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public List<UsuarioEntity> ObtenerPermisosDeUsuario(UsuarioEntity usuario)
         {
             try

@@ -65,3 +65,32 @@ Módulo Visualizar Pedidos;View Orders Module
 Terminar;End
 Refrescar;Refresh
 Quitar;Remove
+Ver;See
+Entrar;Log in
+Salir;Log out
+Tipo;Type
+Administración de roles;Role Administration
+Administración de usuarios;User Administration
+Creación de usuarios;User Creation
+Bitácora;Logs
+Automático;Automatic
+Personalizado;Custom
+Módulo Configuración de Usuario; User Configuration Module
+Idioma seleccionado:;Selected language:
+Configuración de usuario;User Configuration
+Crear;Create
+Patentes;Privileges
+Familias;Group Prigileges
+Crear patente;Create privilege
+Crear familia;Create group privilege
+Seleccionar usuario;Select User
+Agregar permisos;Add privileges
+Agregar grupo;Add group
+Apellido;Last name
+Telefono;Phone
+Usuario;User
+Contraseña;Password
+Severidad;Severity
+Próximamente;Soon
+Tipo producto:;Product type:
+

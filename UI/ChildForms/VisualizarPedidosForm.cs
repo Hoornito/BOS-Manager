@@ -34,7 +34,7 @@ namespace UI.ChildForms
             var listaPedido = _pedidoController.ObtenerPedidos().Select
                 (x => new
                 {
-                    Pedido = x.Id_Pedido,                    
+                    Pedido = x.Id_Pedido,
                 });
             dataGridViewPedidoId.DataSource = listaPedido.ToList();
         }
@@ -49,6 +49,7 @@ namespace UI.ChildForms
             var listaDetalle = _detalleController.ObtenerDetalle(pedido).Select
             (x => new
             {
+                Tipo = x.Tipo,
                 Producto = x.Nombre,
                 //Precio = x.PrecioUnidad,
                 Cantidad = x.Cantidad,
@@ -81,5 +82,9 @@ namespace UI.ChildForms
             LlenarGrillaPedido();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            LlenarGrillaPedido();
+        }
     }
 }

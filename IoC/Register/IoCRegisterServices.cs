@@ -12,6 +12,11 @@ namespace IoC.Register
 {
     internal static class IoCRegisterService
     {
+        /// <summary>
+        /// Registra el servicio
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         internal static IServiceCollection RegisterBusinessLayer(this IServiceCollection services)
         {
             var genericType = typeof(IGenericService<>).GetGenericTypeDefinition();

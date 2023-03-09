@@ -45,6 +45,7 @@ namespace UI
             iconCurrentChildForm = new FontAwesome.Sharp.IconButton();
             panelShadow = new System.Windows.Forms.Panel();
             panelDesktop = new System.Windows.Forms.Panel();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
@@ -54,6 +55,7 @@ namespace UI
             // panelMenu
             // 
             panelMenu.BackColor = System.Drawing.Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(iconButton2);
             panelMenu.Controls.Add(btnVisualizar);
             panelMenu.Controls.Add(btnAdministracion);
             panelMenu.Controls.Add(btnClientes);
@@ -65,7 +67,7 @@ namespace UI
             panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             panelMenu.Location = new System.Drawing.Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new System.Drawing.Size(222, 584);
+            panelMenu.Size = new System.Drawing.Size(222, 634);
             panelMenu.TabIndex = 1;
             // 
             // btnVisualizar
@@ -238,20 +240,21 @@ namespace UI
             panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             panelTitleBar.Location = new System.Drawing.Point(222, 0);
             panelTitleBar.Name = "panelTitleBar";
-            panelTitleBar.Size = new System.Drawing.Size(987, 65);
+            panelTitleBar.Size = new System.Drawing.Size(1172, 65);
             panelTitleBar.TabIndex = 2;
             // 
             // iconButton1
             // 
+            iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             iconButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.Backspace;
             iconButton1.IconColor = System.Drawing.SystemColors.ButtonFace;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new System.Drawing.Point(870, 9);
+            iconButton1.Location = new System.Drawing.Point(1067, 0);
             iconButton1.Name = "iconButton1";
-            iconButton1.Size = new System.Drawing.Size(105, 47);
+            iconButton1.Size = new System.Drawing.Size(105, 65);
             iconButton1.TabIndex = 2;
             iconButton1.Text = "Salir";
             iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -291,7 +294,7 @@ namespace UI
             panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
             panelShadow.Location = new System.Drawing.Point(222, 65);
             panelShadow.Name = "panelShadow";
-            panelShadow.Size = new System.Drawing.Size(987, 9);
+            panelShadow.Size = new System.Drawing.Size(1172, 9);
             panelShadow.TabIndex = 3;
             // 
             // panelDesktop
@@ -301,14 +304,34 @@ namespace UI
             panelDesktop.Location = new System.Drawing.Point(222, 74);
             panelDesktop.MinimumSize = new System.Drawing.Size(1095, 525);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new System.Drawing.Size(1095, 525);
+            panelDesktop.Size = new System.Drawing.Size(1172, 560);
             panelDesktop.TabIndex = 4;
+            // 
+            // iconButton2
+            // 
+            iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            iconButton2.FlatAppearance.BorderSize = 0;
+            iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            iconButton2.IconColor = System.Drawing.Color.Gainsboro;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            iconButton2.Location = new System.Drawing.Point(0, 548);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new System.Drawing.Size(222, 60);
+            iconButton2.TabIndex = 8;
+            iconButton2.Text = "Configuración de Usuario";
+            iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            iconButton2.UseVisualStyleBackColor = true;
+            iconButton2.Click += iconButton2_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1209, 584);
+            ClientSize = new System.Drawing.Size(1394, 634);
             Controls.Add(panelDesktop);
             Controls.Add(panelShadow);
             Controls.Add(panelTitleBar);
@@ -344,5 +367,6 @@ namespace UI
         private System.Windows.Forms.Label lblTitleChildForm;
         private FontAwesome.Sharp.IconButton btnVisualizar;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }

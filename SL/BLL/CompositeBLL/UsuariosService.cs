@@ -27,13 +27,17 @@ namespace SL.BLL.CompositeBLL
         {
             _usuario_PermisoService = usuario_PermisoService;
         }
-
+        /// <summary>
+        /// Crea un usuario
+        /// </summary>
+        /// <param name="usuario"></param>
         public void CrearUsuario(UsuarioModel usuario)
         {
             try
             {
                 var password = HashPassword(usuario.pw);
                 usuario.pw = password;
+                usuario.idioma = "es-ES";
                 _repository.Insert(usuario);
                 _unitOfWork.Save();
             }
@@ -44,7 +48,11 @@ namespace SL.BLL.CompositeBLL
             }
             
         }
-
+        /// <summary>
+        /// Guarda los permisos
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="permisos"></param>
         public void GuardarPermisos(Usuario_PermisoModel u, List<Usuario_PermisoModel> permisos)
         {
             try
@@ -64,7 +72,11 @@ namespace SL.BLL.CompositeBLL
                 throw;
             }
         }
-        
+        /// <summary>
+        /// encripta la contraseña del usuario
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private string HashPassword(string password)
         {
             byte[] salt = new byte[16];
@@ -82,6 +94,12 @@ namespace SL.BLL.CompositeBLL
             return Convert.ToBase64String(hashBytes);
         }
 
+        /// <summary>
+        /// Verifica la contraseña del usuario
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="hashedPassword"></param>
+        /// <returns></returns>
         private bool VerifyPassword(string password, string hashedPassword)
         {
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);
@@ -102,6 +120,12 @@ namespace SL.BLL.CompositeBLL
             return true;
         }
 
+        /// <summary>
+        /// Verifica si el usuario existe y devuelve true si existe y coincide la contraseña
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool Login(string usuario, string password)
         {
             //afytodo - 1 - log that user is trying to login
@@ -115,6 +139,15 @@ namespace SL.BLL.CompositeBLL
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Actualiza el idioma del usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        public void ActualizarIdioma(UsuarioModel usuario)
+        {
+            _repository.Update(usuario);
         }
     }
 }

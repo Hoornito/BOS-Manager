@@ -26,7 +26,7 @@ namespace UI.ChildForms.Composite
             _loggerController = loggerController;
             InitializeComponent();
 
-            //TranducirForm.Current.TraducirFormulario(this);
+            TranducirForm.Current.TraducirFormulario(this);
             LlenarGrilla();
         }
 

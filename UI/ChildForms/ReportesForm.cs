@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using Contratos.Controllers;
+
+using Domain.Entities;
 
 using System;
 using System.Collections.Generic;
@@ -18,8 +20,10 @@ namespace UI.ChildForms
 {
     public partial class ReportesForm : Form
     {
-        public ReportesForm()
+        private readonly IReporteController _reporteController;
+        public ReportesForm(IReporteController reporteController)
         {
+            _reporteController = reporteController;
             InitializeComponent();
             TranducirForm.Current.TraducirFormulario(this);
         }
@@ -27,7 +31,8 @@ namespace UI.ChildForms
         private void iconButton1_Click(object sender, EventArgs e)
         {
             //generate a report with data from pedidoEntity using the report viewer
-
+            _reporteController.GenerarReporteMensual();
+            _reporteController.GenerateExcelReport();
         }
 
 

@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 
+using UI.Tools.LanguageManager;
+
 namespace UI.ChildForms.Composite
 {
     public partial class PatenteFamiliaForm : Form
@@ -23,11 +25,12 @@ namespace UI.ChildForms.Composite
 
         //private readonly IUsuariosController _usuarioController;
         private readonly IPermisosController _permisosController;
-        
+
         public PatenteFamiliaForm(/*IUsuariosController usuarioController,*/ IPermisosController permisosController)
         {
             InitializeComponent();
             _permisosController = permisosController;
+            TranducirForm.Current.TraducirFormulario(this);
             CargarListasEnMemoria();
         }
 
@@ -35,7 +38,7 @@ namespace UI.ChildForms.Composite
         {
             ListaPatentes = _permisosController.GetAllPatentes().ToList();
             ListaFamilias = _permisosController.GetAllFamilias().ToList();
-            
+
             cb_familia.DataSource = ListaFamilias;
             cb_familia.DisplayMember = "Nombre";
             cb_patentes.DataSource = ListaPatentes;
@@ -53,7 +56,7 @@ namespace UI.ChildForms.Composite
         private void MostrarFamilia(bool init = false)
         {
             this.treeView.Nodes.Clear();
-            
+
             TreeNode root = new TreeNode(seleccion.Nombre);
             root.Tag = seleccion;
             treeView.Nodes.Add(root);
@@ -98,7 +101,7 @@ namespace UI.ChildForms.Composite
                     my_menu.ItemClicked += new ToolStripItemClickedEventHandler(my_menu_ItemClicked);
                 }
             }
-                       
+
         }
         private void my_menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -117,7 +120,7 @@ namespace UI.ChildForms.Composite
             try
             {
                 var test = seleccion ?? throw new Exception("No hay familia seleccionada");
-                
+
                 _permisosController.GuardarFamilia(seleccion);
                 MostrarFamilia();
                 CargarListasEnMemoria();
@@ -141,7 +144,7 @@ namespace UI.ChildForms.Composite
 
             seleccion.AgregarHijo(tmp);
             MostrarFamilia();
-            
+
         }
 
         private void btn_crearPatente_Click(object sender, EventArgs e)

@@ -44,6 +44,10 @@ namespace SL.InfraSL.TypeBuilders
                 .IsRequired(false)
                 .HasColumnType("nvarchar(50)");
 
+            builder.Property(p => p.idioma)
+                .IsRequired(false)
+                .HasColumnType("nvarchar(50)");
+
             builder.ToTable("usuarios");
         }
     }

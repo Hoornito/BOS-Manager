@@ -31,6 +31,10 @@ namespace UI.Tools.LanguageManager
 
         #endregion
 
+        /// <summary>
+        /// traduce el formulario
+        /// </summary>
+        /// <param name="form"></param>
         public void TraducirFormulario(Form form)
         {
             try
@@ -47,6 +51,10 @@ namespace UI.Tools.LanguageManager
             }
         }
 
+        /// <summary>
+        /// recorre el control para luego ser traducido
+        /// </summary>
+        /// <param name="control"></param>
         private void RecorrerControl(Control control)
         {
             string palabra;
@@ -63,6 +71,10 @@ namespace UI.Tools.LanguageManager
             }
         }
 
+        /// <summary>
+        /// traduce el control
+        /// </summary>
+        /// <param name="control"></param>
         public static void TraducirControl(Control control)
         {
             PropertyInfo TextControl;
@@ -74,6 +86,15 @@ namespace UI.Tools.LanguageManager
                 PalabraTraducida = control.Text.Traducir();
                 control.Text = PalabraTraducida;
             }
+        }
+
+        /// <summary>
+        /// selecciona el idioma
+        /// </summary>
+        /// <param name="idioma"></param>
+        public void SeleccionarIdioma(string idioma)
+        {
+            idioma.SeleccionarIdioma();
         }
     }
 }

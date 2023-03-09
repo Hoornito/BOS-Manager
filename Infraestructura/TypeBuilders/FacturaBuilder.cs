@@ -7,6 +7,10 @@ namespace Infraestructura.TypeBuilders
 {
     public class FacturaBuilder : IEntityTypeConfiguration<FacturaModel>
     {
+        /// <summary>
+        /// Configuracion de la tabla Factura
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<FacturaModel> builder)
         {
             builder.HasKey(p => p.Id_Factura);

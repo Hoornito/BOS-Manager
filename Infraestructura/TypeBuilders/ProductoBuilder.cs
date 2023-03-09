@@ -7,6 +7,10 @@ namespace Infraestructura.TypeBuilders
 {
     public class ProductoBuilder : IEntityTypeConfiguration<ProductoModel>
     {
+        /// <summary>
+        /// Configuracion de la tabla Producto
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<ProductoModel> builder)
         {
             builder.HasKey(p => p.Id_Producto);
@@ -26,6 +30,9 @@ namespace Infraestructura.TypeBuilders
                 .IsRequired(true);
 
             builder.Property(p => p.Cantidad)
+                .IsRequired(true);
+
+            builder.Property(p => p.Tipo)
                 .IsRequired(true);
 
             builder.Property(p => p.Active)

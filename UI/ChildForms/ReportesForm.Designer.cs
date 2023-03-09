@@ -28,217 +28,243 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.RB_Automatico = new System.Windows.Forms.RadioButton();
-            this.RB_Personalizado = new System.Windows.Forms.RadioButton();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
+            checkBox1 = new System.Windows.Forms.CheckBox();
+            checkBox2 = new System.Windows.Forms.CheckBox();
+            checkBox3 = new System.Windows.Forms.CheckBox();
+            checkBox4 = new System.Windows.Forms.CheckBox();
+            checkBox5 = new System.Windows.Forms.CheckBox();
+            checkBox6 = new System.Windows.Forms.CheckBox();
+            checkBox7 = new System.Windows.Forms.CheckBox();
+            checkBox8 = new System.Windows.Forms.CheckBox();
+            RB_Automatico = new System.Windows.Forms.RadioButton();
+            RB_Personalizado = new System.Windows.Forms.RadioButton();
+            label3 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(176, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Fecha desde:";
+            label1.AutoSize = true;
+            label1.Enabled = false;
+            label1.ForeColor = System.Drawing.Color.White;
+            label1.Location = new System.Drawing.Point(176, 167);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(75, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Fecha desde:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(459, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Fecha hasta:";
+            label2.AutoSize = true;
+            label2.Enabled = false;
+            label2.ForeColor = System.Drawing.Color.White;
+            label2.Location = new System.Drawing.Point(459, 167);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(72, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Fecha hasta:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 32F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(171, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(373, 51);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Modulo Reportes";
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Arial", 32F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            label5.Location = new System.Drawing.Point(171, 9);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(373, 51);
+            label5.TabIndex = 35;
+            label5.Text = "Modulo Reportes";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(107, 113);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimePicker1.Size = new System.Drawing.Size(229, 23);
-            this.dateTimePicker1.TabIndex = 36;
+            dateTimePicker1.Enabled = false;
+            dateTimePicker1.Location = new System.Drawing.Point(107, 185);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dateTimePicker1.Size = new System.Drawing.Size(229, 23);
+            dateTimePicker1.TabIndex = 36;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(382, 113);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimePicker2.Size = new System.Drawing.Size(229, 23);
-            this.dateTimePicker2.TabIndex = 37;
+            dateTimePicker2.Enabled = false;
+            dateTimePicker2.Location = new System.Drawing.Point(382, 185);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dateTimePicker2.Size = new System.Drawing.Size(229, 23);
+            dateTimePicker2.TabIndex = 37;
             // 
             // iconButton1
             // 
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(276, 338);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(164, 64);
-            this.iconButton1.TabIndex = 38;
-            this.iconButton1.Text = "Generar";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            iconButton1.ForeColor = System.Drawing.Color.White;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
+            iconButton1.IconColor = System.Drawing.Color.White;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.Location = new System.Drawing.Point(280, 335);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new System.Drawing.Size(164, 64);
+            iconButton1.TabIndex = 38;
+            iconButton1.Text = "Generar";
+            iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = true;
+            iconButton1.Click += iconButton1_Click;
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(261, 208);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 19);
-            this.checkBox1.TabIndex = 39;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.AutoSize = true;
+            checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox1.Location = new System.Drawing.Point(261, 224);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new System.Drawing.Size(104, 19);
+            checkBox1.TabIndex = 39;
+            checkBox1.Text = "Próximamente";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(261, 233);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(83, 19);
-            this.checkBox2.TabIndex = 40;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            checkBox2.AutoSize = true;
+            checkBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox2.Location = new System.Drawing.Point(261, 249);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new System.Drawing.Size(104, 19);
+            checkBox2.TabIndex = 40;
+            checkBox2.Text = "Próximamente";
+            checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(261, 258);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(83, 19);
-            this.checkBox3.TabIndex = 42;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            checkBox3.AutoSize = true;
+            checkBox3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox3.Location = new System.Drawing.Point(261, 274);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new System.Drawing.Size(104, 19);
+            checkBox3.TabIndex = 42;
+            checkBox3.Text = "Próximamente";
+            checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(261, 282);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(83, 19);
-            this.checkBox4.TabIndex = 41;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            checkBox4.AutoSize = true;
+            checkBox4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox4.Location = new System.Drawing.Point(261, 298);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new System.Drawing.Size(104, 19);
+            checkBox4.TabIndex = 41;
+            checkBox4.Text = "Próximamente";
+            checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox5
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(382, 208);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(83, 19);
-            this.checkBox5.TabIndex = 46;
-            this.checkBox5.Text = "checkBox5";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            checkBox5.AutoSize = true;
+            checkBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox5.Location = new System.Drawing.Point(382, 224);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new System.Drawing.Size(104, 19);
+            checkBox5.TabIndex = 46;
+            checkBox5.Text = "Próximamente";
+            checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(382, 233);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(83, 19);
-            this.checkBox6.TabIndex = 45;
-            this.checkBox6.Text = "checkBox6";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            checkBox6.AutoSize = true;
+            checkBox6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox6.Location = new System.Drawing.Point(382, 249);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new System.Drawing.Size(104, 19);
+            checkBox6.TabIndex = 45;
+            checkBox6.Text = "Próximamente";
+            checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(382, 258);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(83, 19);
-            this.checkBox7.TabIndex = 44;
-            this.checkBox7.Text = "checkBox7";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            checkBox7.AutoSize = true;
+            checkBox7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox7.Location = new System.Drawing.Point(382, 274);
+            checkBox7.Name = "checkBox7";
+            checkBox7.Size = new System.Drawing.Size(104, 19);
+            checkBox7.TabIndex = 44;
+            checkBox7.Text = "Próximamente";
+            checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox8
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(382, 283);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(83, 19);
-            this.checkBox8.TabIndex = 43;
-            this.checkBox8.Text = "checkBox8";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            checkBox8.AutoSize = true;
+            checkBox8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            checkBox8.Location = new System.Drawing.Point(382, 299);
+            checkBox8.Name = "checkBox8";
+            checkBox8.Size = new System.Drawing.Size(104, 19);
+            checkBox8.TabIndex = 43;
+            checkBox8.Text = "Próximamente";
+            checkBox8.UseVisualStyleBackColor = true;
             // 
             // RB_Automatico
             // 
-            this.RB_Automatico.AutoSize = true;
-            this.RB_Automatico.Location = new System.Drawing.Point(107, 157);
-            this.RB_Automatico.Name = "RB_Automatico";
-            this.RB_Automatico.Size = new System.Drawing.Size(88, 19);
-            this.RB_Automatico.TabIndex = 47;
-            this.RB_Automatico.TabStop = true;
-            this.RB_Automatico.Text = "Automático";
-            this.RB_Automatico.UseVisualStyleBackColor = true;
+            RB_Automatico.AutoSize = true;
+            RB_Automatico.Checked = true;
+            RB_Automatico.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            RB_Automatico.Location = new System.Drawing.Point(107, 101);
+            RB_Automatico.Name = "RB_Automatico";
+            RB_Automatico.Size = new System.Drawing.Size(88, 19);
+            RB_Automatico.TabIndex = 47;
+            RB_Automatico.TabStop = true;
+            RB_Automatico.Text = "Automático";
+            RB_Automatico.UseVisualStyleBackColor = true;
             // 
             // RB_Personalizado
             // 
-            this.RB_Personalizado.AutoSize = true;
-            this.RB_Personalizado.Location = new System.Drawing.Point(107, 182);
-            this.RB_Personalizado.Name = "RB_Personalizado";
-            this.RB_Personalizado.Size = new System.Drawing.Size(98, 19);
-            this.RB_Personalizado.TabIndex = 48;
-            this.RB_Personalizado.TabStop = true;
-            this.RB_Personalizado.Text = "Personalizado";
-            this.RB_Personalizado.UseVisualStyleBackColor = true;
+            RB_Personalizado.AutoSize = true;
+            RB_Personalizado.Enabled = false;
+            RB_Personalizado.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            RB_Personalizado.Location = new System.Drawing.Point(107, 223);
+            RB_Personalizado.Name = "RB_Personalizado";
+            RB_Personalizado.Size = new System.Drawing.Size(98, 19);
+            RB_Personalizado.TabIndex = 48;
+            RB_Personalizado.Text = "Personalizado";
+            RB_Personalizado.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            label3.Location = new System.Drawing.Point(107, 143);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(85, 15);
+            label3.TabIndex = 49;
+            label3.Text = "Próximamente";
             // 
             // ReportesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(136)))), ((int)(((byte)(205)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.RB_Personalizado);
-            this.Controls.Add(this.RB_Automatico);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.iconButton1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "ReportesForm";
-            this.Text = "ReportesForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(129, 136, 205);
+            ClientSize = new System.Drawing.Size(1054, 454);
+            Controls.Add(label3);
+            Controls.Add(RB_Personalizado);
+            Controls.Add(RB_Automatico);
+            Controls.Add(checkBox5);
+            Controls.Add(checkBox6);
+            Controls.Add(checkBox7);
+            Controls.Add(checkBox8);
+            Controls.Add(checkBox3);
+            Controls.Add(checkBox4);
+            Controls.Add(checkBox2);
+            Controls.Add(checkBox1);
+            Controls.Add(iconButton1);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(label5);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Name = "ReportesForm";
+            Text = "Reportes";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -259,5 +285,6 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.RadioButton RB_Automatico;
         private System.Windows.Forms.RadioButton RB_Personalizado;
+        private System.Windows.Forms.Label label3;
     }
 }

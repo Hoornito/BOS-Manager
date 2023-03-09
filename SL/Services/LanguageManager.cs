@@ -33,11 +33,24 @@ namespace SL.Services
         //    usuario.IdiomaSeleccionado
         //}
 
+        /// <summary>
+        /// Traduce una clave o etiqueta al idioma actualmente seleccionado.
+        /// </summary>
+        /// <param name="clave">La clave o etiqueta que se desea traducir.</param>
+        /// <returns>El texto traducido al idioma actualmente seleccionado.</returns>
         public string Traducir(string clave)
         {
             return BLLLanguage.Current.Traducir(clave);
         }
 
+        /// <summary>
+        /// Selecciona un idioma específico para su uso en la aplicación.
+        /// </summary>
+        /// <param name="idioma">El nombre del idioma que se desea seleccionar.</param>
+        public void SeleccionarIdioma(string idioma)
+        {
+            BLLLanguage.Current.SeleccionarIdioma(idioma);
+        }
         //public string Traducir(string clave)
         //{
 

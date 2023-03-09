@@ -19,7 +19,10 @@ namespace SL.BLL.CompositeBLL
         {
 
         }
-
+        /// <summary>
+        /// Elimina un permiso de un usuario
+        /// </summary>
+        /// <param name="usuarioPermiso"></param>
         public void EliminarPermisoDeUsuario(Usuario_PermisoModel usuarioPermiso)
         {
             try
@@ -33,7 +36,11 @@ namespace SL.BLL.CompositeBLL
                 throw;
             }
         }
-
+        /// <summary>
+        /// Guarda los permisos de un usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="permisos"></param>
         public void GuardarPermisos(Usuario_PermisoModel usuario, List<Usuario_PermisoModel> permisos)
         {
             try

@@ -30,6 +30,7 @@ namespace UI
         private readonly IPermisosController _permisosController;
         private readonly IUsuariosController _usuariosController;
         private readonly ILoggerController _loggerController;
+        private readonly IReporteController _reporteController;
 
         public LoginForm(
             IClienteController clienteController,
@@ -39,7 +40,8 @@ namespace UI
             IFacturaController facturaController,
             IPermisosController permisosController,
             IUsuariosController usuariosController,
-            ILoggerController loggerController)
+            ILoggerController loggerController,
+            IReporteController reporteController)
         {
             _detalleController = detalleController;
             _clienteController = clienteController;
@@ -49,8 +51,10 @@ namespace UI
             _permisosController = permisosController;
             _usuariosController = usuariosController;
             _loggerController = loggerController;
+            _reporteController = reporteController;
             InitializeComponent();
             TranducirForm.Current.TraducirFormulario(this);
+
         }
         UsuarioEntity user = new UsuarioEntity();
         private void button1_Click(object sender, EventArgs e)
@@ -61,7 +65,7 @@ namespace UI
             if (_usuariosController.Login(user))
             {
                 user = _permisosController.GetUsuario(user.usuario);
-                MainForm mainForm = new MainForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController, user);
+                MainForm mainForm = new MainForm(_clienteController, _pedidoController, _detalleController, _productoController, _facturaController, _permisosController, _usuariosController, _loggerController, _reporteController, user);
                 mainForm.Show();
                 this.Hide();
             }
@@ -96,5 +100,6 @@ namespace UI
                 TB_Contraseña.PasswordChar = '•';
             }
         }
+
     }
 }

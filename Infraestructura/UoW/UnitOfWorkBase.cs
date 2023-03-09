@@ -20,6 +20,10 @@ namespace Infraestructura.UoW
 
         public DbContext Context => _context;
 
+        /// <summary>
+        /// Guarda los cambios
+        /// </summary>
+        /// <returns></returns>
         public int Save()
         {
             try
@@ -33,6 +37,11 @@ namespace Infraestructura.UoW
             }
         }
 
+        /// <summary>
+        /// Guarda los cambios de forma asincrona
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<int> SaveAsync()
         {
             try
@@ -54,6 +63,11 @@ namespace Infraestructura.UoW
             }
         }
 
+        /// <summary>
+        /// Guarda los cambios de forma asincrona
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<int> SaveAsync(CancellationToken cancellationToken)
         {
             return await _context.SaveChangesAsync(cancellationToken);
@@ -61,6 +75,10 @@ namespace Infraestructura.UoW
 
         private bool disposed = false;
 
+        /// <summary>
+        /// Libera los recursos
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -72,7 +90,9 @@ namespace Infraestructura.UoW
             }
             this.disposed = true;
         }
-
+        /// <summary>
+        /// Libera los recursos
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

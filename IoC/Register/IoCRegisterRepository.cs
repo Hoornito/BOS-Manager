@@ -13,6 +13,12 @@ namespace IoC.Register
 {
     internal static class IoCRegisterRepository
     {
+        /// <summary>
+        /// Registra el repositorio
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         internal static IServiceCollection RegisterDataLayer(this IServiceCollection services, IConfiguration configuration)
         {
             var genericType = typeof(IGenericRepository<>).GetGenericTypeDefinition();

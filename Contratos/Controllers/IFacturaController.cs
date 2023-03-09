@@ -10,6 +10,10 @@ namespace Contratos.Controllers
 {
     public interface IFacturaController
     {
+        /// <summary>
+        /// guardar cambios
+        /// </summary>
+        /// <param name="facturaEntity"></param>
         public void GuardarCambios(FacturaEntity facturaEntity);
     }
 }

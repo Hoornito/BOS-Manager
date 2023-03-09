@@ -91,7 +91,7 @@
             Controls.Add(dateTimePicker1);
             Controls.Add(LogView);
             Name = "BitacoraForm";
-            Text = "BitacoraForm";
+            Text = "Bitacora";
             ((System.ComponentModel.ISupportInitialize)LogView).EndInit();
             ResumeLayout(false);
             PerformLayout();

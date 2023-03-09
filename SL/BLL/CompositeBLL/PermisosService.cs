@@ -15,12 +15,19 @@ namespace SL.BLL.CompositeBLL
 {
     public class PermisosService : GenericService<PermisoModel>, IPermisosService
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="unitOfWork"></param>
         public PermisosService(IUnitOfWork unitOfWork)
             : base(unitOfWork, unitOfWork.GetRepository<IPermisosRepository>())
         {
 
         }
-
+        /// <summary>
+        /// Obtiene todos los permisos
+        /// </summary>
+        /// <returns></returns>
         public Array GetAllPermission()
         {
             return Enum.GetValues(typeof(TipoPermiso));
@@ -31,6 +38,11 @@ namespace SL.BLL.CompositeBLL
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Crea un permiso
+        /// </summary>
+        /// <param name="permiso"></param>
+        /// <returns></returns>
         public PermisoModel CrearPermiso(PermisoModel permiso)
         {
             try
@@ -53,11 +65,21 @@ namespace SL.BLL.CompositeBLL
             }
         }
 
+        /// <summary>
+        /// Elimina un permiso
+        /// </summary>
+        /// <param name="permiso"></param>
         public void EliminarPermiso(PermisoModel permiso)
         {
             Eliminar(permiso);
         }
 
+        /// <summary>
+        /// Obtiene todos los permisos
+        /// </summary>
+        /// <param name="permisos"></param>
+        /// <param name="tipoPermiso"></param>
+        /// <returns></returns>
         public bool BuscarPermiso(List<ComponenteEntity> permisos, TipoPermiso? tipoPermiso)
         {
             try
@@ -79,6 +101,12 @@ namespace SL.BLL.CompositeBLL
             }
         }
         
+        /// <summary>
+        /// Valida que no se repitan los permisos
+        /// </summary>
+        /// <param name="familiaActual"></param>
+        /// <param name="familiaAgregar"></param>
+        /// <returns></returns>
         public bool ValidarPermisosRepetidos(FamiliaEntity familiaActual, FamiliaEntity familiaAgregar)
         {
             try
@@ -103,6 +131,12 @@ namespace SL.BLL.CompositeBLL
             }
         }
         
+        /// <summary>
+        /// Separa las familias
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="Permisos"></param>
+        /// <returns></returns>
         private bool SepararFamilia(ComponenteEntity c, List<ComponenteEntity> Permisos)
         {
             bool EstaRepetido = false;
@@ -114,7 +148,12 @@ namespace SL.BLL.CompositeBLL
             }
             return false;
         }
-
+        /// <summary>
+        /// Recorre las familias
+        /// </summary>
+        /// <param name="Listafamilias"></param>
+        /// <param name="tipoPermiso"></param>
+        /// <returns></returns>
         private bool RecorrerFamilias(List<FamiliaEntity> Listafamilias, TipoPermiso? tipoPermiso)
         {
             bool Result = false;
@@ -130,7 +169,12 @@ namespace SL.BLL.CompositeBLL
             }
             return Result;
         }
-
+        /// <summary>
+        /// Recorre las patentes
+        /// </summary>
+        /// <param name="patentes"></param>
+        /// <param name="tipoPermiso"></param>
+        /// <returns></returns>
         private bool RecorrerPatentes(List<PatenteEntity> patentes, TipoPermiso? tipoPermiso)
         {
             foreach (PatenteEntity patente in patentes)

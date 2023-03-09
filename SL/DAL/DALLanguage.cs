@@ -1,8 +1,11 @@
-﻿using SL.Services.Extensions;
+﻿using SL.InfraSL;
+using SL.Services.Extensions;
 using SL.Settings;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,6 +21,7 @@ namespace SL.DAL
         private readonly static DALLangugage _instance = new DALLangugage();
 
         private string filePath;
+        private string CodigoCultura;
 
         public static DALLangugage Current
         {
@@ -31,30 +35,41 @@ namespace SL.DAL
         {
             //Implement here the initialization code
             filePath = ApplicationSettings.IdiomaPath;
+            CodigoCultura = ApplicationSettings.Culture;
         }
         #endregion
 
+        public void SetCodigoCultura(string codigoCultura)
+        {
+            CodigoCultura = codigoCultura;
+        }
+
         public string Traducir(string clave)
         {
-            string codigoCultura = Thread.CurrentThread.CurrentUICulture.Name;
-
             string palabraTraducida = clave;
-
-            using (StreamReader streamReader = new StreamReader(filePath + codigoCultura))
+            if(clave == "")
             {
-                while (!streamReader.EndOfStream)
-                {
-                    string linea = streamReader.ReadLine();
-                    string[] keyValuePair = linea.Split(';');
 
-                    if (keyValuePair[0].ToLower() == clave.ToLower())
+            }
+            else
+            {
+                using (StreamReader streamReader = new StreamReader(filePath + CodigoCultura))
+                {
+                    while (!streamReader.EndOfStream)
                     {
-                        palabraTraducida = keyValuePair[1];
-                        break;
+                        string linea = streamReader.ReadLine();
+                        string[] keyValuePair = linea.Split(';');
+
+                        if (keyValuePair[0].ToLower() == clave.ToLower())
+                        {
+                            palabraTraducida = keyValuePair[1];
+                            break;
+                        }
                     }
                 }
             }
             return palabraTraducida;
+
         }
 
      }

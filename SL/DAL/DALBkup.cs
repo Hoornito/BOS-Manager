@@ -30,6 +30,9 @@ namespace SL.DAL
         }
         #endregion
 
+        /// <summary>
+        /// Genera una copia de seguridad de la base de datos.
+        /// </summary>
         public void GenerateBackup()
         {
             string command = ApplicationSettings.BackUp;

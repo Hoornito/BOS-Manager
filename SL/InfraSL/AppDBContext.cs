@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using SL.Services.Extensions;
+using SL.Settings;
 
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace SL.InfraSL
             if (!optionsBuilder.IsConfigured)
             {
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-HOT45OL;Initial Catalog=Composite;Integrated Security=True");
-                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Composite;Integrated Security=True");
+                optionsBuilder.UseSqlServer(ApplicationSettings.CompoPath);
                 //base.OnConfiguring(optionsBuilder);
             }
 

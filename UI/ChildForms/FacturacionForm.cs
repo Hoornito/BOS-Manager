@@ -67,7 +67,7 @@ namespace UI.ChildForms
 
             foreach (var item in listaDetalle)
             {
-                listBox1.Items.Add($"-> {item.Cantidad} x {item.Nombre} = {item.SubTotal}");
+                listBox1.Items.Add($"-> {item.Cantidad} x {item.Tipo} {item.Nombre} = {item.SubTotal}");
             }
 
             listBox1.Items.Add("--- Total: $" + pedido.Total);
@@ -83,7 +83,7 @@ namespace UI.ChildForms
             FacturaEntity facturaEntity = new FacturaEntity(EntityState.Added);
 
             facturaEntity.Id_Pedido = (int)dataGridViewPedidoId.SelectedCells[0].Value;
-            facturaEntity.IVA = decimal.Parse(txtIVA.Text);
+            //facturaEntity.IVA = decimal.Parse(txtIVA.Text);
 
             _facturaController.GuardarCambios(facturaEntity);
 
@@ -96,11 +96,6 @@ namespace UI.ChildForms
         {
             listBox1.Items.Clear();
             PrintList((int)dataGridViewPedidoId.SelectedCells[0].Value);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            txtIVA.ReadOnly = !checkBox1.Checked;
         }
     }
 }

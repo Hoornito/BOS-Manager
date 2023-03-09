@@ -13,15 +13,16 @@ namespace Domain.Entities
             State = state;
         }
 
-        public ProductoEntity(string nombre, string descripción, decimal precioUnidad, int cantidad) : this()
+        public ProductoEntity(string nombre, string descripción, decimal precioUnidad, int cantidad, string tipo) : this()
         {
             Nombre = nombre;
             Descripción = descripción;
             PrecioUnidad = precioUnidad;
             Cantidad = cantidad;
+            Tipo = tipo;
         }
 
-        public ProductoEntity(Guid id_Producto, string nombre, string descripción, decimal precioUnidad, int cantidad) : this(nombre, descripción, precioUnidad, cantidad)
+        public ProductoEntity(Guid id_Producto, string nombre, string descripción, decimal precioUnidad, int cantidad, string tipo) : this(nombre, descripción, precioUnidad, cantidad, tipo)
         {
             Id_Producto = id_Producto;
         }
@@ -40,6 +41,9 @@ namespace Domain.Entities
 
         [Required(ErrorMessage = "Cantidad es requerida.")]
         public int Cantidad { get; set; }
+
+        [Required(ErrorMessage = "Tipo es requerido.")]
+        public string Tipo { get; set; }
 
         [Browsable(false)]
         public EntityState State { get; set; }
