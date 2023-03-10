@@ -4,6 +4,9 @@ using Infraestructura;
 
 using IoC;
 
+using log4net.Appender;
+using log4net;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +26,8 @@ using System.Windows.Forms;
 
 using UI.ChildForms;
 using UI.ChildForms.Composite;
+using log4net.Layout;
+using log4net.Repository.Hierarchy;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
@@ -37,6 +42,7 @@ namespace UI
         [STAThread]
         static void Main()
         {
+            InitializeLogger();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -47,7 +53,7 @@ namespace UI
                     ConfigureServices(services);
                 })
                 .Build();
-            
+
             var services = host.Services;
             UpdateDatabases(services);
             VerifyBusinessTables(services);
@@ -83,7 +89,7 @@ namespace UI
 
         }
 
-        
+
         private static void ConfigurationBuild()
         {
             var builder = new ConfigurationBuilder()
@@ -174,6 +180,35 @@ namespace UI
             Array.Copy(hash, 0, hashBytes, 16, 32);
 
             return Convert.ToBase64String(hashBytes);
+        }
+
+        private static void InitializeLogger()
+        {
+            Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();
+
+            PatternLayout patternLayout = new PatternLayout();
+            patternLayout.ConversionPattern = "%date [%thread] %-5level %logger [%ndc] %line - %message%newline";
+            patternLayout.ActivateOptions();
+
+            RollingFileAppender roller = new RollingFileAppender();
+            roller.Name = "LoggerManager";
+            roller.AppendToFile = false;
+            roller.File = AppDomain.CurrentDomain.BaseDirectory + "\\LoggerManager.txt";
+            roller.Layout = patternLayout;
+            roller.MaxSizeRollBackups = 5;
+            roller.MaximumFileSize = "10MB";
+            roller.RollingStyle = RollingFileAppender.RollingMode.Size;
+            roller.StaticLogFileName = true;
+            roller.LockingModel = new FileAppender.MinimalLock();
+            roller.ActivateOptions();
+            hierarchy.Root.AddAppender(roller);
+
+            MemoryAppender memory = new MemoryAppender();
+            memory.ActivateOptions();
+            hierarchy.Root.AddAppender(memory);
+
+            //hierarchy.Root.Level = Level.Info;
+            hierarchy.Configured = true;
         }
     }
 }

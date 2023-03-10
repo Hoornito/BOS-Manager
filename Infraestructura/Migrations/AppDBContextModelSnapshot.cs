@@ -26,10 +26,9 @@ namespace Infraestructura.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Active")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                    b.Property<bool?>("Active")
+                        .IsRequired()
+                        .HasColumnType("bit");
 
                     b.Property<string>("DNI")
                         .HasColumnType("nvarchar(max)");
@@ -72,6 +71,10 @@ namespace Infraestructura.Migrations
                     b.Property<Guid>("Id_Producto")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id_Detalle");
 
                     b.HasIndex("Id_Pedido");
@@ -88,9 +91,8 @@ namespace Infraestructura.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BaseImponible")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("BaseImponible")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("FechaYHora")
                         .HasColumnType("datetime2");
@@ -98,9 +100,8 @@ namespace Infraestructura.Migrations
                     b.Property<decimal>("IVA")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("IVADiscriminado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("IVADiscriminado")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Id_Pedido")
                         .HasColumnType("int");
@@ -115,9 +116,7 @@ namespace Infraestructura.Migrations
             modelBuilder.Entity("Domain.Models.PedidoModel", b =>
                 {
                     b.Property<int>("Id_Pedido")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Descripción")
                         .HasColumnType("nvarchar(max)");
@@ -132,11 +131,10 @@ namespace Infraestructura.Migrations
                     b.Property<DateTime>("FechaHora")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id_Cliente")
+                    b.Property<int?>("Id_Cliente")
                         .HasColumnType("int");
 
                     b.Property<string>("Retiro")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelefonoContacto")
@@ -147,8 +145,6 @@ namespace Infraestructura.Migrations
 
                     b.HasKey("Id_Pedido");
 
-                    b.HasIndex("Id_Cliente");
-
                     b.ToTable("Pedido");
                 });
 
@@ -158,10 +154,9 @@ namespace Infraestructura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("Active")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
+                    b.Property<bool?>("Active")
+                        .IsRequired()
+                        .HasColumnType("bit");
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
@@ -176,6 +171,10 @@ namespace Infraestructura.Migrations
 
                     b.Property<decimal>("PrecioUnidad")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_Producto");
 
@@ -209,20 +208,6 @@ namespace Infraestructura.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Pedido");
-                });
-
-            modelBuilder.Entity("Domain.Models.PedidoModel", b =>
-                {
-                    b.HasOne("Domain.Models.ClienteModel", "Cliente")
-                        .WithMany("Pedido")
-                        .HasForeignKey("Id_Cliente");
-
-                    b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("Domain.Models.ClienteModel", b =>
-                {
                     b.Navigation("Pedido");
                 });
 

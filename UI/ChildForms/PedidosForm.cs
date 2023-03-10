@@ -139,7 +139,7 @@ namespace UI.ChildForms
         {
             try
             {
-                ProductoAddForm registrarProducto = new ProductoAddForm(_productoController, cboProducto.Text);
+                ProductoAddForm registrarProducto = new ProductoAddForm(_productoController, cboProducto.Text, cboTipoProducto.Text);
                 registrarProducto.ShowDialog();
             }
             catch (Exception ex)

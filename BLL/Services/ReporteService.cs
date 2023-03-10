@@ -200,11 +200,16 @@ namespace BLL.Services
         /// </summary>
         public void GenerateExcelReport()
         {
-            
+            var _clienteService = _unitOfWork.GetRepository<IClienteRepository>();
             var _pedidoService = _unitOfWork.GetRepository<IPedidoRepository>();
-
-            var data = _pedidoService.Get(includeProperties: "Cliente").ToList();
-            ExcelGenerator.Current.Generate(data);
+            var pedidos = _pedidoService.Get().ToList();
+            var clientes = _clienteService.Get().ToList();
+            foreach (var pedido in pedidos)
+            {
+                pedido.Cliente = clientes.FirstOrDefault(c => c.Id_Cliente == pedido.Id_Cliente);
+            }
+            
+            ExcelGenerator.Current.Generate(pedidos);
         }
     }
 }

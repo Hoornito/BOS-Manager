@@ -160,8 +160,9 @@ namespace UI.Controllers
         /// <returns></returns>
         public PedidoEntity ObtenerPedido(int id)
         {
-            var pedido = _mapper.Map<PedidoEntity>(_pedidoService.Get(x => x.Id_Pedido == id, includeProperties: "Cliente").FirstOrDefault());
-            
+            var pedido = _mapper.Map<PedidoEntity>(_pedidoService.Get(x => x.Id_Pedido == id).FirstOrDefault());
+            var cliente = _clienteService.Get(x => x.Id_Cliente == pedido.Id_Cliente).FirstOrDefault();
+            pedido.NombreCliente = cliente.Nombre;
             return pedido;
         }
     }

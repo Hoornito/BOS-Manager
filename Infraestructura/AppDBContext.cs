@@ -33,8 +33,8 @@ namespace Infraestructura
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-HOT45OL;Initial Catalog=BOSDB;Integrated Security=True");
-                optionsBuilder.UseSqlServer(ApplicationSettings.SQLPath);
+                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=BOSDBT;Integrated Security=True");
+                //optionsBuilder.UseSqlServer(ApplicationSettings.SQLPath);
                 //base.OnConfiguring(optionsBuilder);
             }
 
@@ -59,6 +59,7 @@ namespace Infraestructura
         public override int SaveChanges()
         {
             SetUpdateDateOnModifiedEntries();
+            SetActiveOnAddedEntries();
             return base.SaveChanges();
         }
         /// <summary>
@@ -84,6 +85,18 @@ namespace Infraestructura
             foreach (var modifiedEntry in modifiedEntries)
             {
                 modifiedEntry.Property("UpdateDate").CurrentValue = DateTime.Now;
+            }
+        }
+        private void SetActiveOnAddedEntries()
+        {
+            var modifiedEntries = ChangeTracker
+                .Entries()
+                .Where(e => e.Metadata.FindProperty("Active") != null &&
+                            e.State == EntityState.Added); //Obtengo la propiedad UpdateDate con el estado modificado (Update) y le seteo la fecha y hora actual
+
+            foreach (var modifiedEntry in modifiedEntries)
+            {
+                modifiedEntry.Property("Active").CurrentValue = true;
             }
         }
     }

@@ -53,8 +53,6 @@ namespace BLL.Services
                 pedido.Estado = "Facturado";
                 _pedidoRepository.Update(pedido);
 
-                _unitOfWork.Save();
-
                 string cantidad = "";
                 string producto = "";
                 string precio = "";
@@ -85,6 +83,8 @@ namespace BLL.Services
                 var strPDFPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["TEMP_PATH"] + ConfigurationManager.AppSettings["PDF_TEMP"] + "_Nro_" + facturaModel.Id_Factura + "-" + facturaModel.FechaYHora.ToShortDateString().ToString().Replace("/", "-") + ".pdf";
                 
                 File.WriteAllBytes(strPDFPath, fileC);
+
+                _unitOfWork.Save();
             }
             catch (Exception)
             {

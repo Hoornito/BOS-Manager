@@ -44,7 +44,7 @@ namespace BLL.Services
                 Actualizar(pedidoModel);
                 _unitOfWork.Save();
 
-                pedidoModel = Get(x => x.Id_Pedido == pedidoModel.Id_Pedido, includeProperties: "Cliente").FirstOrDefault();
+                //pedidoModel = Get(x => x.Id_Pedido == pedidoModel.Id_Pedido, includeProperties: "Cliente").FirstOrDefault();
                 //if (pedidoModel.Estado == "Finalizado")
                 //{
                 //    MessageService messageService = new MessageService();

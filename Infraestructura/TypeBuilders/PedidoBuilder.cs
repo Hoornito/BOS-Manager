@@ -14,14 +14,17 @@ namespace Infraestructura.TypeBuilders
         public void Configure(EntityTypeBuilder<PedidoModel> builder)
         {
             builder.HasKey(p => p.Id_Pedido);
+            builder.Property(p => p.Id_Pedido).ValueGeneratedNever();
 
             builder.HasMany(p => p.Factura)
                 .WithOne(p => p.Pedido)
                 .HasForeignKey(p => p.Id_Pedido);
 
-            builder.HasOne(p => p.Cliente)
-                .WithMany(p => p.Pedido)
-                .HasForeignKey(p => p.Id_Cliente)
+            //builder.HasOne(p => p.Cliente)
+            //    .WithMany(p => p.Pedido)
+            //    .IsRequired(false);
+
+            builder.Property(p => p.Id_Cliente)
                 .IsRequired(false);
 
             builder.HasMany(p => p.DetallePedido)
@@ -38,7 +41,7 @@ namespace Infraestructura.TypeBuilders
                 .IsRequired(false);
 
             builder.Property(p => p.Retiro)
-                .IsRequired(true);
+                .IsRequired(false);
 
             builder.Property(p => p.FechaHora)
                 .IsRequired(true);

@@ -70,7 +70,7 @@ namespace SL.Tools
                         new Cell() { CellReference = "C" + (index + 2), DataType = CellValues.Number, CellValue = new CellValue(item.TelefonoContacto) },
                         new Cell() { CellReference = "D" + (index + 2), DataType = CellValues.String, CellValue = new CellValue(item.FechaHora.ToShortDateString()) },
                         new Cell() { CellReference = "E" + (index + 2), DataType = CellValues.String, CellValue = new CellValue(item.Estado) },
-                        new Cell() { CellReference = "F" + (index + 2), DataType = CellValues.Number, CellValue = new CellValue(item.Total) })
+                        new Cell() { CellReference = "F" + (index + 2), DataType = CellValues.Number, CellValue = new CellValue((double)item.Total) })
                 );
                 foreach (var dataRow in dataRows)
                 {

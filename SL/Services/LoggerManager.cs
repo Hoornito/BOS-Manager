@@ -1,4 +1,7 @@
 ﻿using log4net;
+using log4net.Appender;
+using log4net.Layout;
+using log4net.Repository.Hierarchy;
 
 using System;
 using System.Collections.Generic;
@@ -7,14 +10,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "config")]
 namespace SL.Services
 {
     public static class LoggerManager
     {
-        private static readonly ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log = log4net.LogManager.GetLogger("LoggerManager");
         private static readonly ILog logtest = LogManager.GetLogger("LoggerManager");
         private static readonly ILog logPerformance = LogManager.GetLogger("performance");
+
+
+
 
         /// <summary>
         /// Genera un registro de log de un error ocurrido en la aplicación.
@@ -58,6 +63,7 @@ namespace SL.Services
         {
             log.Warn(message);
         }
+
         //#region singleton
 
         //private readonly static LoggerManager _instance = new LoggerManager();

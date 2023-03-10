@@ -19,12 +19,14 @@ namespace UI.GrandChildForms
     public partial class ProductoAddForm : Form
     {
         private readonly IProductoController _productoController;
-        public ProductoAddForm(IProductoController productoController, string nombre)
+        private string tipoProd;
+        public ProductoAddForm(IProductoController productoController, string nombre, string tipo)
         {
             
             _productoController = productoController;
             InitializeComponent();
             txtNombre.Text = nombre;
+            tipoProd = tipo;
         }
 
         private void AgregarProducto_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace UI.GrandChildForms
                 var productohelper = _productoController.GetProducto(producto.Nombre);
                 producto.PrecioUnidad = productohelper.PrecioUnidad;
                 producto.Cantidad = Convert.ToInt32(txtCantidad.Text);
-
+                producto.Tipo = tipoProd;
                 _productoController.GuardarCambios(producto);
                 this.Close();
             }
@@ -54,7 +56,7 @@ namespace UI.GrandChildForms
 
                 producto.Nombre = txtNombre.Text;
                 producto.Cantidad = 100;
-
+                producto.Tipo = tipoProd;
                 _productoController.GuardarCambios(producto);
                 this.Close();
             }
@@ -72,6 +74,7 @@ namespace UI.GrandChildForms
 
                 producto.Nombre = txtNombre.Text;
                 producto.Cantidad = 200;
+                producto.Tipo = tipoProd;
 
                 _productoController.GuardarCambios(producto);
                 this.Close();

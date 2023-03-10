@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="InfraSL\Migrations\**" />
+    <EmbeddedResource Remove="InfraSL\Migrations\**" />
+    <None Remove="InfraSL\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspectInjector" Version="2.6.0" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
@@ -38,10 +44,6 @@
     <None Update="Services\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="InfraSL\Migrations\" />
   </ItemGroup>
 
 </Project>
