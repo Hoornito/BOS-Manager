@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Component Id="SL.dll" Guid="a127da51-122f-4fc3-b785-d81298b52ca1">
+				<File Id="SL.dll" Source="SL.dll" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

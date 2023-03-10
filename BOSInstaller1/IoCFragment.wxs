@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Component Id="IoC.dll" Guid="e77e936f-8c20-46c5-b78f-2c33dbb1beb1">
+				<File Id="IoC.dll" Source="IoC.dll" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

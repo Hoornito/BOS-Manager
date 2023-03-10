@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="MiInstalador" Language="1033" Version="1.0.0.0" Manufacturer="MiEmpresa" UpgradeCode="1a127f37-1a79-4e58-b499-cfce1468fab4">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="Una versión más nueva de [ProductName] ya está instalada." />
+
+		<!-- Referencia a las secciones Fragment -->
+		<Feature Id="ProductFeature" Title="MiInstalador" Level="1">
+			<ComponentRef Id="BLL.dll" />
+			<ComponentRef Id="Contratos.dll" />
+			<ComponentRef Id="Domain.dll" />
+			<ComponentRef Id="Infraestructura.dll" />
+			<ComponentRef Id="IoC.dll" />
+			<ComponentRef Id="SL.dll" />
+			<ComponentRef Id="UI.dll" />
+		</Feature>
+	</Product>
+</Wix>

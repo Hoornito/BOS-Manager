@@ -9,11 +9,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using SL.Contratos.Repositories;
+using SL.Domain.Models;
 using SL.IoC;
 using SL.Services.Mapper;
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 using UI.ChildForms;
@@ -42,8 +47,10 @@ namespace UI
                     ConfigureServices(services);
                 })
                 .Build();
-
+            
             var services = host.Services;
+            UpdateDatabases(services);
+            VerifyBusinessTables(services);
             //var mainForm = services.GetRequiredService<AdministracionForm>();
             var mainForm = services.GetRequiredService<LoginForm>();
             Application.Run(mainForm);
@@ -94,6 +101,79 @@ namespace UI
         {
             var connectionString = Configuration.GetConnectionString("ServiceLayerSqlConnection");
             return connectionString;
+        }
+
+        private static void UpdateDatabases(IServiceProvider services)
+        {
+            var dbContext = services.GetRequiredService<AppDBContext>();
+            var SldbContext = services.GetRequiredService<SL.InfraSL.AppDBContext>();
+            if (!dbContext.Database.CanConnect())
+                dbContext.Database.Migrate();
+
+            if (!SldbContext.Database.CanConnect())
+                SldbContext.Database.Migrate();
+        }
+
+        private static void VerifyBusinessTables(IServiceProvider services)
+        {
+            var dbContext = services.GetRequiredService<AppDBContext>();
+            var SldbContext = services.GetRequiredService<SL.InfraSL.AppDBContext>();
+            var usuarioRepository = services.GetRequiredService<IUsuariosRepository>();
+            var permisoRepository = services.GetRequiredService<IPermisosRepository>();
+            var usuario_PermisoRepository = services.GetRequiredService<IUsuario_PermisoRepository>();
+
+            UsuarioModel usuario = new();
+            PermisoModel permisoModel = new();
+            if (!usuarioRepository.Get(x => x.usuario.ToLower() == "admin").Any())
+            {
+                usuario.nombre = "admin";
+                usuario.usuario = "admin";
+                usuario.pw = HashPassword("admin");
+                usuario.email = "admin@admin.com";
+                usuario.idioma = "es-ES";
+                usuario.apellido = "admin";
+                usuarioRepository.Insert(usuario);
+                SldbContext.SaveChanges();
+            }
+            else
+                usuario = usuarioRepository.Get(x => x.usuario == "admin").FirstOrDefault();
+
+            if (!permisoRepository.Get(x => x.permiso == "Administrador").Any())
+            {
+                permisoModel.nombre = "Admin";
+                permisoModel.permiso = "Administrador";
+                permisoRepository.Insert(permisoModel);
+                SldbContext.SaveChanges();
+            }
+            else
+                permisoModel = permisoRepository.Get(x => x.permiso == "Administrador").FirstOrDefault();
+
+            if (!usuario_PermisoRepository.Get(x => x.id_permiso == permisoModel.id && x.id_usuario == usuario.id_usuario).Any())
+            {
+                Usuario_PermisoModel usuario_PermisoModel = new();
+                usuario_PermisoModel.id_usuario = usuario.id_usuario;
+                usuario_PermisoModel.id_permiso = permisoModel.id;
+                usuario_PermisoRepository.Insert(usuario_PermisoModel);
+            }
+
+            SldbContext.SaveChanges();
+        }
+
+        private static string HashPassword(string password)
+        {
+            byte[] salt = new byte[16];
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(salt);
+            }
+
+            byte[] hash = new Rfc2898DeriveBytes(password, salt, 10000).GetBytes(32);
+
+            byte[] hashBytes = new byte[48];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 32);
+
+            return Convert.ToBase64String(hashBytes);
         }
     }
 }

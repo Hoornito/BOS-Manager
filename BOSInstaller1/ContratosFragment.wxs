@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Component Id="Contratos.dll" Guid="09b3858e-d5a4-40f9-a92b-5c86fec65926">
+				<File Id="Contratos.dll" Source="Contratos.dll" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

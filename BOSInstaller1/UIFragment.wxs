@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Component Id="UI.dll" Guid="11bc0772-e368-4330-8c8b-bc778279f4f1">
+				<File Id="UI.dll" Source="UI.dll" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>

@@ -34,12 +34,12 @@ namespace SL.Settings
             Configuration = builder.Build();
 
 
-
-            path = Configuration.GetSection("AppSettings").GetSection("filePath").Value;
+            path = AppDomain.CurrentDomain.BaseDirectory + @"\" + Configuration.GetSection("AppSettings").GetSection("filePath").Value;
+            //path = Configuration.GetSection("AppSettings").GetSection("filePath").Value;
             //utilizar solo 1 base de datos
-            BkupDB = Configuration.GetSection("AppSettings").GetSection("Bkup").Value;
+            BkupDB = Configuration.GetSection("AppSettings").GetSection("Bkup").Value.ToString().Replace("{}", AppDomain.CurrentDomain.BaseDirectory);
             conString = Configuration.GetConnectionString("SqlConnection");
-            IPath = Configuration.GetSection("AppSettings").GetSection("idiomaPath").Value;
+            IPath = AppDomain.CurrentDomain.BaseDirectory + @"\" + Configuration.GetSection("AppSettings").GetSection("idiomaPath").Value;
             SP_Login = Configuration.GetSection("AppSettings").GetSection("SP_Login").Value;
             Composite = Configuration.GetConnectionString("ServiceLayerSqlConnection");
             cultureInfo = Configuration.GetSection("AppSettings").GetSection("Culture").Value;
